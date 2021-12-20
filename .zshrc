@@ -102,3 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# add UwUpp-exe to path
+if [ -d "/home/valentin/.local/bin" ] ; then
+    export PATH="/home/valentin/.local/bin:$PATH"
+fi
