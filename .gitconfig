@@ -2,7 +2,7 @@
 	name = EldosHD
 	email = Valentin.Reichenbach@live.com
 [core]
-	editor = code --wait
+	editor = emacs --wait
 
 	#this has to be different on windows. "input" is for linux and mac
 	autocrlf = input
