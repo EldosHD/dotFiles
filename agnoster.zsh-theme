@@ -41,6 +41,9 @@ if [[ -z "$PRIMARY_FG" ]]; then
 	PRIMARY_FG=white1
 fi
 
+# Colors
+NICE_PINK = "#ff86e0"
+
 # Characters
 SEGMENT_SEPARATOR="\ue0b0"
 PLUSMINUS="\u00b1"
