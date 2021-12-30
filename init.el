@@ -28,7 +28,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (all-the-icons-ivy doom-themes doom-modeline helpful counsel ivy-rich which-key rainbow-delimiters auto-complete use-package))))
+    (markdown-mode multiple-cursors all-the-icons-ivy doom-themes doom-modeline helpful counsel ivy-rich which-key rainbow-delimiters auto-complete use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -99,11 +99,16 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+;; multiple cursors
+(use-package multiple-cursors)
+(global-set-key (kbd "C-S-c") 'mc/edit-lines)
 
 
+;;----------------------------------------------------------Themes------------------------------------------------------------
 
-;; Themes
-;; TODOO: The icons in the modeline are not being displayed correctly
+;; You have to run the "all-the-icons-install" function the first time you install all-the-icons
+(use-package all-the-icons)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
@@ -111,3 +116,12 @@
 
 (use-package doom-themes
   :init (load-theme 'doom-laserwave t))
+
+;; markdown support
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
