@@ -1,5 +1,4 @@
 (setq visible-bell t)
-(load-theme 'tango-dark)
 
 ;; Initialize package sources
 (require 'package)
