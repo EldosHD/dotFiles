@@ -108,3 +108,6 @@ source $ZSH/oh-my-zsh.sh
 if [ -d "/home/valentin/.local/bin" ] ; then
     export PATH="/home/valentin/.local/bin:$PATH"
 fi
+
+# change the colorcodes of the "ls -l" output based on the .dircolors file
+eval "$(dircolors ~/.dotFiles/.dircolors)";
