@@ -109,5 +109,10 @@ if [ -d "/home/valentin/.local/bin" ] ; then
     export PATH="/home/valentin/.local/bin:$PATH"
 fi
 
+# add go to path
+if [ -d "/usr/local/go/bin" ] ; then
+    export PATH="/usr/local/go/bin:$PATH"
+fi
+
 # change the colorcodes of the "ls -l" output based on the .dircolors file
 eval "$(dircolors ~/.dotfiles/.dircolors)";
