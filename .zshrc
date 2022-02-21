@@ -115,4 +115,4 @@ if [ -d "/usr/local/go/bin" ] ; then
 fi
 
 # change the colorcodes of the "ls -l" output based on the .dircolors file
-eval "$(dircolors ~/.dotfiles/.dircolors)";
+eval "$(dircolors ~/.dotFiles/.dircolors)";
