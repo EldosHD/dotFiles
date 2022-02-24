@@ -77,7 +77,7 @@ prompt_end() {
     print -n "%{%k%}"
   fi
   print -n "%{%f%}"
-  print -n "\n%{%k%F{#ff86e0}%}$SEGMENT_SEPARATOR%F{white%}"
+  print -n "\n%{%k%F{${NICE_PINK}}%}$SEGMENT_SEPARATOR%F{white%}"
   CURRENT_BG=''
 }
 
@@ -90,7 +90,7 @@ prompt_context() {
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
     #prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
-    prompt_segment "#ff86e0" "#000000" " Cute Cat Girl >w< "
+    prompt_segment "${NICE_PINK}" "#000000" " Cute Cat Girl >w< "
   fi
 }
 
@@ -106,7 +106,7 @@ prompt_git() {
       color=white
       ref="${ref} $PLUSMINUS"
     else
-      color="#ff86e0"
+      color="${NICE_PINK}"
       ref="${ref} "
     fi
     if [[ "${ref/.../}" == "$ref" ]]; then

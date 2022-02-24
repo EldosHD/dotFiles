@@ -102,6 +102,10 @@
 (use-package multiple-cursors)
 (global-set-key (kbd "C-S-c") 'mc/edit-lines)
 
+;; support for the .zsh-theme file extension
+(setq auto-mode-alist 
+      (append '((".*\\.zsh-theme\\'" . sh-mode))
+              auto-mode-alist))
 
 ;;----------------------------------------------------------Themes------------------------------------------------------------
 
