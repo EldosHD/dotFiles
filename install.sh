@@ -11,7 +11,7 @@ fi
 usage() {
     echo "usage: install.sh [OPTION] SUBCOMMAND"
     echo "Possible Options:"
-    echo "   -t      | flag for testing"
+    echo "   -l      | list all programs and files that will be installed with the selected mode"
     echo "   -h      | show this help message and exit"
     echo "Possible subcommands:"
     echo "    full   | full installation"
@@ -21,15 +21,16 @@ usage() {
 }
 
 installType=""
+list=0
 
-
-# Todo:
 # Option for minimal, custom, full install
-while getopts :h:t flag
+# TODO: Option for version and verbosity
+
+while getopts :h:l flag
 do
     case "${flag}" in
 	h) usage ;;
-	t) echo "test" ;;
+	l) list=1 ;;
 	*) usage ;;
     esac
 done
@@ -40,16 +41,23 @@ ARG1=${@:$OPTIND:1}
 
 case "$ARG1" in
     minimal) installType="minimal";;
-    custom) installType="custom";;
+    custom)
+	installType="custom"
+	echo "TODO: This feature is not implemented yet."
+	exit 1
+	;;
     full) installType="full";;
     *) usage ;;
 esac
 
+if [ $list == 1 ]
+then
+    echo "List of all programs and files installed by selected mode: $installType"
+fi
 
 echo "Install Type: $installType"
 
-
-# Install:
+# TODOOOO: Install:
 # - Git
 # - Emacs
 # - Tmux

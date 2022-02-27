@@ -107,6 +107,7 @@
       (append '((".*\\.zsh-theme\\'" . sh-mode))
               auto-mode-alist))
 
+(global-set-key (kbd "C-x x") 'comint-kill-whole-line)
 ;;----------------------------------------------------------Themes------------------------------------------------------------
 
 ;; You have to run the "all-the-icons-install" function the first time you install all-the-icons
