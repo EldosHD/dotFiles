@@ -105,6 +105,13 @@
 
 ;;------------------------------------------------------Language Support------------------------------------------------------
 
+;; python
+(use-package python-mode
+  :ensure t
+  :hook (python-mode . lsp-deferred)
+  :custom
+  (python-shell-interpreter "python3"))
+
 ;; markdown support
 (use-package markdown-mode
   :ensure t

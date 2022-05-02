@@ -57,6 +57,10 @@ fi
 
 echo "Install Type: $installType"
 
+# lsp mode for emacs
+# pip install 'python-language-server[all]'
+
+
 # TODOOOO: Install:
 # - Git
 # - Emacs
