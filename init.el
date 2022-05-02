@@ -27,7 +27,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (markdown-mode multiple-cursors all-the-icons-ivy doom-themes doom-modeline helpful counsel ivy-rich which-key rainbow-delimiters auto-complete use-package))))
+    (java-snippets lsp-java markdown-mode multiple-cursors all-the-icons-ivy doom-themes doom-modeline helpful counsel ivy-rich which-key rainbow-delimiters auto-complete use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -102,12 +102,61 @@
 (use-package multiple-cursors)
 (global-set-key (kbd "C-S-c") 'mc/edit-lines)
 
+
+;;------------------------------------------------------Language Support------------------------------------------------------
+
+;; markdown support
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 ;; support for the .zsh-theme file extension
 (setq auto-mode-alist 
       (append '((".*\\.zsh-theme\\'" . sh-mode))
               auto-mode-alist))
 
 (global-set-key (kbd "C-x x") 'comint-kill-whole-line)
+
+
+;; code completion
+(condition-case nil
+    (require 'use-package)
+  (file-error
+   (require 'package)
+   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+   (package-initialize)
+   (package-refresh-contents)
+   (package-install 'use-package)
+   (setq use-package-always-ensure t)
+   (require 'use-package)))
+
+
+;; java support
+(require 'lsp-java)
+(add-hook 'java-mode-hook #'lsp)
+
+(add-hook 'java-mode-hook #'lsp-java-boot-lens-mode)
+
+(use-package projectile)
+(use-package flycheck)
+(use-package yasnippet :config (yas-global-mode))
+(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
+  :config (setq lsp-completion-enable-additional-text-edit nil))
+(use-package hydra)
+(use-package company)
+(use-package lsp-ui)
+(use-package which-key :config (which-key-mode))
+(use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
+(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+(use-package dap-java :ensure nil)
+(use-package helm-lsp)
+(use-package helm
+  :config (helm-mode))
+(use-package lsp-treemacs)
+
 ;;----------------------------------------------------------Themes------------------------------------------------------------
 
 ;; You have to run the "all-the-icons-install" function the first time you install all-the-icons
@@ -120,12 +169,3 @@
 
 (use-package doom-themes
   :init (load-theme 'doom-laserwave t))
-
-;; markdown support
-(use-package markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
