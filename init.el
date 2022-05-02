@@ -40,6 +40,14 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
+;; remove tool, scroll and menu bar
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
+
+;; helps to open the last files
+(recentf-mode 1)
+
 ;; better parentheses
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
