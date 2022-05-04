@@ -27,13 +27,16 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (java-snippets lsp-java markdown-mode multiple-cursors all-the-icons-ivy doom-themes doom-modeline helpful counsel ivy-rich which-key rainbow-delimiters auto-complete use-package))))
+    (lsp-mode java-snippets lsp-java markdown-mode multiple-cursors all-the-icons-ivy doom-themes doom-modeline helpful counsel ivy-rich which-key rainbow-delimiters auto-complete use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; auto complete
+(use-package auto-complete) ;; installes the package automaticly the first time the init script is called
 (ac-config-default)
 
 ;; add line numbers
