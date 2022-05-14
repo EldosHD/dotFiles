@@ -1,0 +1,51 @@
+{
+    "workbench.colorTheme": "Pink Cat Boo",
+    "window.zoomLevel": 1,
+    "security.workspace.trust.banner": "always",
+    "security.workspace.trust.enabled": false,
+    "editor.tokenColorCustomizations": {
+        //"functions": "#E6C691",
+        //"keywords": "#EAC2E0",
+        //"comments": "#665562",
+        //"types": "#EAC2E0",
+        //"strings": "#ff86e0",
+        //"numbers": "#E6C691",
+        //"variables": "#E6C691",
+        //"textMateRules": [{
+        //    "scope": "keyword.operator",
+        //    "settings": {
+        //        "foreground": "#CC6CB4",
+        //    },"name": "jo"
+        //}]
+    },
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        },
+        "zsh (2)": {
+            "path": "/usr/bin/zsh"
+        }
+    },
+    "workbench.colorCustomizations": {
+    "[Pink Cat Boo]": {
+        "statusBar.foreground": "#000000"
+    }
+    }
+}
