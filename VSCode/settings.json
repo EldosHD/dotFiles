@@ -44,8 +44,10 @@
         }
     },
     "workbench.colorCustomizations": {
+
     "[Pink Cat Boo]": {
-        "statusBar.foreground": "#000000"
+        "statusBar.foreground": "#000000",
+        "gitlens.trailingLineForegroundColor": "#a3a3a3"
     }
     }
 }
