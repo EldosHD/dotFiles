@@ -42,7 +42,8 @@ if [[ -z "$PRIMARY_FG" ]]; then
 fi
 
 # Colors
-NICE_PINK="#ff86e0"
+# old pink NICE_PINK="#ff86e0"
+NICE_PINK="#ff87ff"
 
 # Characters
 SEGMENT_SEPARATOR="\ue0b0"
