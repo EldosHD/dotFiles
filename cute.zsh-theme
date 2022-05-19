@@ -44,6 +44,7 @@ fi
 # Colors
 # old pink NICE_PINK="#ff86e0"
 NICE_PINK="#ff87ff"
+WHITE='#FFFFFF'
 
 # Characters
 SEGMENT_SEPARATOR="\ue0b0"
@@ -78,7 +79,8 @@ prompt_end() {
     print -n "%{%k%}"
   fi
   print -n "%{%f%}"
-  print -n "\n%{%k%F{${NICE_PINK}}%}$SEGMENT_SEPARATOR%F{white%}"
+  print -n "\n%{%k%F{${NICE_PINK}}%}$SEGMENT_SEPARATOR%F{$WHITE}"
+
   CURRENT_BG=''
 }
 

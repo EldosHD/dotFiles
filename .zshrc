@@ -116,3 +116,6 @@ fi
 
 # change the colorcodes of the "ls -l" output based on the .dircolors file
 eval "$(dircolors ~/.dotFiles/.dircolors)";
+
+# start UwUfetch
+uwufetch
