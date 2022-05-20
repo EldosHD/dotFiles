@@ -22,6 +22,14 @@
 # jobs are running in this shell will all be displayed automatically when
 # appropriate.
 
+# Cheat sheet
+# change color of text foreground --> %{$fg{color}%} || %F{color}
+# change color of text background --> %{$bg{color}%} || %K{color}
+# reset text color with %f and bg color with %k
+# reset both with %{$reset_color%}
+
+
+
 ### Segments of the prompt, default order declaration
 
 typeset -aHg AGNOSTER_PROMPT_SEGMENTS=(
@@ -54,6 +62,8 @@ DETACHED="\u27a6"
 CROSS="\u2718"
 LIGHTNING="\u26a1"
 GEAR="\u2699"
+triangleColor=$WHITE
+RIGHT_TRIANGLE="\u276f"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -79,7 +89,7 @@ prompt_end() {
     print -n "%{%k%}"
   fi
   print -n "%{%f%}"
-  print -n "\n%{%k%F{${NICE_PINK}}%}$SEGMENT_SEPARATOR%F{$WHITE}"
+  print -n "\n%{%k%F{${triangleColor}}%}$RIGHT_TRIANGLE%F{$WHITE}"
 
   CURRENT_BG=''
 }
@@ -93,7 +103,7 @@ prompt_context() {
 
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
     #prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
-    prompt_segment "${NICE_PINK}" "#000000" " Cute Cat Girl >w< "
+    prompt_segment "${NICE_PINK}" "#000000" " %n "
   fi
 }
 
@@ -134,7 +144,8 @@ prompt_dir() {
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
+  [[ $RETVAL -ne 0 ]] && triangleColor=$NICE_PINK
+  # [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
 
