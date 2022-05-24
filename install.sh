@@ -1,12 +1,10 @@
 #!/bin/bash
 
 # require sudo
-if [ `id -u` != "0" ]
-then
+if [ $(id -u) != "0" ]; then
     echo "This script has to be run as sudo"
     exit
 fi
-
 
 usage() {
     echo "usage: install.sh [OPTION] SUBCOMMAND"
@@ -20,49 +18,65 @@ usage() {
     exit
 }
 
+installTmuxCpuMemProgram() {
+    git clone https://github.com/thewtex/tmux-mem-cpu-load.git tmuxLoad
+    cd tmuxLoad
+    cmake .
+    make
+    sudo make install
+}
+
+installUwUFetch() {
+    git clone https://github.com/TheDarkBug/uwufetch.git
+    cd uwufetch
+    make build # add "CFLAGS+=-D__IPHONE__" if you are building for iOS
+    sudo make install
+}
+
 installType=""
 list=0
 
 # Option for minimal, custom, full install
 # TODO: Option for version and verbosity
 
-while getopts :h:l flag
-do
+while getopts :h:l flag; do
     case "${flag}" in
-	h) usage ;;
-	l) list=1 ;;
-	*) usage ;;
+    h) usage ;;
+    l) list=1 ;;
+    *) usage ;;
     esac
 done
-
-
 
 ARG1=${@:$OPTIND:1}
 
 case "$ARG1" in
-    minimal) installType="minimal";;
-    custom)
-	installType="custom"
-	echo "TODO: This feature is not implemented yet."
-	exit 1
-	;;
-    full) installType="full";;
-    *) usage ;;
+minimal) installType="minimal" ;;
+custom)
+    installType="custom"
+    echo "TODO: This feature is not implemented yet."
+    exit 1
+    ;;
+full) installType="full" ;;
+*) usage ;;
 esac
 
-if [ $list == 1 ]
-then
+if [ $list == 1 ]; then
     echo "List of all programs and files installed by selected mode: $installType"
 fi
 
 echo "Install Type: $installType"
 
-# lsp mode for emacs
-# pip install 'python-language-server[all]'
+if [ $installType == "full" ] || [ $installType == "minimal" ]; then
+    apt update
+    echo "[install.sh]-- Installing Git"
+    apt install git
 
+    echo "[install.sh]-- Installing VScode"
+    snap install code
 
-# TODOOOO: Install:
-# - Git
-# - Emacs
-# - Tmux
-# - Zsh
+    echo "[install.sh]-- Installing tmux"
+    apt install tmux
+
+    echo "[install.sh]-- Installing zsh + omz"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
