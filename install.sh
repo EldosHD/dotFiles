@@ -69,13 +69,13 @@ echo "Install Type: $installType"
 if [ $installType == "full" ] || [ $installType == "minimal" ]; then
     apt update
     echo "[install.sh]-- Installing Git"
-    apt install git
+    apt install -y git
 
     echo "[install.sh]-- Installing VScode"
     snap install code
 
     echo "[install.sh]-- Installing tmux"
-    apt install tmux
+    apt install -y tmux
 
     echo "[install.sh]-- Installing zsh + omz"
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
