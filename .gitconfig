@@ -2,7 +2,7 @@
 	name = EldosHD
 	email = Eldos.sonofelax@gmail.com
 # include uni email
-[includeIf "gitdir:~/GitHub/Uni/"]
+[includeIf "gitdir:~/GitHub/Uni/*"]
     path = ~/dotFiles/Uni/.gitconfig
 
 [core]
