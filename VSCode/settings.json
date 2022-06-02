@@ -1,6 +1,5 @@
 {
     "workbench.colorTheme": "Pink Cat Boo",
-    "window.zoomLevel": 1,
     "security.workspace.trust.banner": "always",
     "security.workspace.trust.enabled": false,
     "editor.tokenColorCustomizations": {
@@ -49,5 +48,6 @@
         "statusBar.foreground": "#000000",
         "gitlens.trailingLineForegroundColor": "#a3a3a3"
     }
-    }
+    },
+    "editor.inlineSuggest.enabled": true
 }

@@ -22,7 +22,7 @@
 # jobs are running in this shell will all be displayed automatically when
 # appropriate.
 
-# Cheat sheet
+# # Cheat sheet
 # change color of text foreground --> %{$fg{color}%} || %F{color}
 # change color of text background --> %{$bg{color}%} || %K{color}
 # reset text color with %f and bg color with %k

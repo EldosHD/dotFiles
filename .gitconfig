@@ -1,6 +1,10 @@
 [user]
 	name = EldosHD
 	email = Eldos.sonofelax@gmail.com
+# include uni email
+[includeIf "gitdir:~/.dotFiles/Uni"]
+    path = ~/dotFiles/Uni/.gitconfig
+
 [core]
 	editor = code
 
