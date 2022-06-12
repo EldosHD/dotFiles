@@ -57,5 +57,12 @@
         "plaintext": false,
         "markdown": true,
         "java": true
-    }
+    },
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "/usr/lib/jvm/jdk-17",
+            "default": true
+        }
+    ]
 }
