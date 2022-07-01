@@ -64,5 +64,9 @@
             "path": "/usr/lib/jvm/jdk-17",
             "default": true
         }
-    ]
+    ],
+    "[plaintext]": {
+        "diffEditor.wordWrap": "on",
+        "editor.wordWrap": "on",
+    }
 }
