@@ -10,6 +10,7 @@
 
 - Enter Copy mode: `[`
 - List all Keys: `?`
+- On screen clock: `t`
 - Split Vertical: `|`
 - Split Horizontal: `-`
 - Arrange Panes nicely: `M-4`
