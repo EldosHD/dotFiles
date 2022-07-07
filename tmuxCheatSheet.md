@@ -2,6 +2,8 @@
 
 - Command mode: `C + a`
 - Delete line: `C + u`
+- Next window: `C + n`
+- Previous window: `C + p`
 
 ## In command mode
 
@@ -12,8 +14,6 @@
 - Arrange Panes nicely: `M + 4`
 - Jump to the beginning of the line: `C + a`
 - New window: `c`
-- Next window: `C + n`
-- Previous window: `C + p`
 - window number (0-9): `(0-9)`
 
 ## In Copy mode
@@ -23,13 +23,10 @@
 - Scroll down: `C + down`
 - Scroll up half page: `M + up`
 - Scroll down half page: `M + down`
+- Next search match: `n`
+- Previous search match: `p`
 
-## In search mode
-
-- Next match: `n`
-- Previous match: `N` // change to `p`
-
-## config file
+## config file notes
 
 - `-n` flag means that the key is bound in the root tabel:
   - `bind-key C-t COMMAND` binds `C-t` to command in the prefix table (so the real keybinding is `C-a C-t`)
