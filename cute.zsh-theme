@@ -100,10 +100,11 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   local user=`whoami`
-
   if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CONNECTION" ]]; then
-    #prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
+    # prompt_segment $PRIMARY_FG default " %(!.%{%F{yellow}%}.)$user@%m "
     prompt_segment "${NICE_PINK}" "#000000" " %n "
+    
+    # prompt_segment "${NICE_PINK}" "#000000" " UwU "
   fi
 }
 
