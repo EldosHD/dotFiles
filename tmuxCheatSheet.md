@@ -30,7 +30,7 @@
 ## config file notes
 
 - useful information about keybindings in `man tmux` at `line 887`
+- useful information about buffers in `man tmux` at `line 1800`
 - `-n` flag means that the key is bound in the root tabel:
   - `bind-key C-t COMMAND` binds `C-t` to command in the prefix table (so the real keybinding is `C-a C-t`)
   - `bind-key -n C-t COMMAND` binds `C-t` to command in the root table (so the real keybinding is `C-t`)
-- useful information about buffers in `man tmux` at `line 1800`
