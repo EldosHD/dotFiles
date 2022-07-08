@@ -118,4 +118,7 @@ fi
 eval "$(dircolors ~/.dotFiles/.dircolors)";
 
 # start UwUfetch
-uwufetch
+# uwufetch
+
+# start technoart
+technoart -s
