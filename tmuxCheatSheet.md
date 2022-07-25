@@ -8,6 +8,7 @@
 
 ## In command mode
 
+- todolist: `C-t`
 - Enter Copy mode: `[`
 - List all Keys: `?`
 - On screen clock: `t`
