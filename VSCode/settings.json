@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "Pink Cat Boo",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
     "security.workspace.trust.banner": "always",
     "security.workspace.trust.enabled": false,
     "editor.tokenColorCustomizations": {
@@ -50,7 +50,6 @@
     }
     },
     "editor.inlineSuggest.enabled": true,
-    "window.zoomLevel": 1,
     "github.copilot.enable": {
         "*": true,
         "yaml": false,
@@ -68,5 +67,7 @@
     "[plaintext]": {
         "diffEditor.wordWrap": "on",
         "editor.wordWrap": "on",
-    }
+    },
+    "window.zoomLevel": 2,
+    "editor.lineNumbers": "relative"
 }
