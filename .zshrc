@@ -120,5 +120,9 @@ eval "$(dircolors ~/.dotFiles/.dircolors)";
 # start UwUfetch
 # uwufetch
 
+# add fzf to zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 # start technoart
 technoart -s

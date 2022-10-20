@@ -69,5 +69,6 @@
         "editor.wordWrap": "on",
     },
     "window.zoomLevel": 2,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "java.jdt.ls.java.home": "/usr/lib/jvm/jdk-17"
 }
