@@ -18,6 +18,17 @@ usage() {
     exit
 }
 
+# currently not used
+# function accepts a packagemanager and a package name
+installPackage() {
+    echo "[install.sh] Installing $2"
+    if [ "$1" = "apt" ]; then
+        apt install -y $2 2> /dev/null
+    elif [ "$1" = "snap" ]; then
+        snap install $2 2> /dev/null
+    fi
+}
+
 installTmuxCpuMemProgram() {
     git clone https://github.com/thewtex/tmux-mem-cpu-load.git tmuxLoad
     cd tmuxLoad
@@ -102,6 +113,7 @@ linkMin() {
     ln -s $(pwd)/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme
 
     echo "[install.sh]-- Linking ssh config"
+    mkdir -p ~/GitHub/Uni/
     ln -s $(pwd)/Uni/sshConfig ~/.ssh/config
 }
 
