@@ -40,37 +40,40 @@ installUwUFetch() {
 installMin() {
     apt update
     echo "[install.sh]-- Installing Git"
-    apt install -y git
+    apt install -y git &> /dev/null
+
+    echo "[install.sh]-- Installing curl"
+    apt install -y curl &> /dev/null
 
     echo "[install.sh]-- Installing VScode"
-    snap install code
+    snap install code &> /dev/null
 
     echo "[install.sh]-- Installing tmux"
-    apt install -y tmux
+    apt install -y tmux &> /dev/null
 
     echo "[install.sh]-- Installing tmux cpu and memory program"
-    installTmuxCpuMemProgram
+    installTmuxCpuMemProgram &> /dev/null
 
     echo "[install.sh]-- Installing zsh"
-    apt install -y zsh
-    chsh -s $(which zsh)
+    apt install -y zsh  &> /dev/null
+    chsh -s $(which zsh) &> /dev/null
 
     echo "[install.sh]-- Installing omz"
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null
 }
 
 installFull() {
     echo "[install.sh]-- Installing UwUFetch"
-    installUwUFetch
+    installUwUFetch &> /dev/null
 
     echo "[install.sh]-- Installing Neofetch"
-    apt install -y neofetch
+    apt install -y neofetch &> /dev/null
 
     echo "[install.sh]-- Installing htop"
-    apt install -y htop
+    apt install -y htop &> /dev/null
 
     echo "[install.sh]-- Installing nyancat"
-    apt install -y nyancat
+    apt install -y nyancat &> /dev/null
 }
 
 linkMin() {
@@ -131,12 +134,9 @@ fi
 
 echo "Install Type: $installType"
 
-if [ $installType == "full" ] || [ $installType == "minimal" ]; then
-    installMin
-    linkMin
-fi
-
+installMin
 if [ $installType == "full" ]; then
     installFull
     linkFull
 fi
+linkMin
