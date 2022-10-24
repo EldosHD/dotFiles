@@ -53,13 +53,7 @@ installUwUFetch() {
 
 installMin() {
     echo "[install.sh]-- updating sources"
-    if apt update &> /dev/null; then
-        echo "[install.sh]-- sources updated"
-    else
-        echo "[install.sh]-- failed to update sources"
-        echo "[install.sh]-- check your internet connection"
-        exit
-    fi
+    apt update &> /dev/null
 
     echo "[install.sh]-- Installing Git"
     if apt install -y git &> /dev/null; then
