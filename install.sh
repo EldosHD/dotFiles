@@ -179,7 +179,7 @@ installFull() {
 
 linkMin() {
     echo "[install.sh]-- Linking .gitconfig"
-    rm -rf home/$SUDO_USER/.gitconfig
+    rm -rf home/$SUDO_USER/.gitconfig &>/dev/null
     if ln -s $(pwd)/.gitconfig /home/$SUDO_USER/.gitconfig; then
         echo "[install.sh]-- .gitconfig linked"
     else
@@ -188,9 +188,9 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking VScode settings"
-    mkdir -p home/$SUDO_USER/.config/Code/User
-    rm -rf home/$SUDO_USER/.config/Code/User/settings.json
-    rm -rf home/$SUDO_USER/.config/Code/User/snippets
+    mkdir -p home/$SUDO_USER/.config/Code/User &>/dev/null
+    rm -rf home/$SUDO_USER/.config/Code/User/settings.json &>/dev/null
+    rm -rf home/$SUDO_USER/.config/Code/User/snippets &>/dev/null
     if ln -s $(pwd)/VScode/settings.json home/$SUDO_USER/.config/Code/User/settings.json; then
         echo "[install.sh]-- VScode settings linked"
     else
@@ -205,7 +205,7 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .tmux.conf"
-    rm -rf /home/$SUDO_USER/.tmux.conf
+    rm -rf /home/$SUDO_USER/.tmux.conf &>/dev/null
     if ln -s $(pwd)/.tmux.conf /home/$SUDO_USER/.tmux.conf; then
         echo "[install.sh]-- .tmux.conf linked"
     else
@@ -214,9 +214,9 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .zshrc"
-    rm -rf /home/$SUDO_USER/.zshrc
-    rm -rf /home/$SUDO_USER/.fzf.zsh
-    rm -rf /home/$SUDO_USER/.oh-my-zsh/themes/cute.zsh-theme
+    rm -rf /home/$SUDO_USER/.zshrc &>/dev/null
+    rm -rf /home/$SUDO_USER/.fzf.zsh &>/dev/null
+    rm -rf /home/$SUDO_USER/.oh-my-zsh/themes/cute.zsh-theme &>/dev/null
     if ln -s $(pwd)/.zshrc /home/$SUDO_USER/.zshrc; then
         echo "[install.sh]-- .zshrc linked"
     else
@@ -237,10 +237,10 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking ssh config"
-    mkdir -p /home/$SUDO_USER/GitHub/Uni/
-    mkdir -p /home/$SUDO_USER/.ssh
-    mv /home/$SUDO_USER/.ssh/config /home/$SUDO_USER/.ssh/config.bak
-    if ln -s $(pwd)/Uni/sshConfig ~/.ssh/config; then
+    mkdir -p /home/$SUDO_USER/GitHub/Uni/ &>/dev/null
+    mkdir -p /home/$SUDO_USER/.ssh &>/dev/null
+    mv /home/$SUDO_USER/.ssh/config /home/$SUDO_USER/.ssh/config.bak &>/dev/null
+    if ln -s $(pwd)/Uni/sshConfig /home/$SUDO_USER/.ssh/config; then
         echo "[install.sh]-- ssh config linked"
     else
         echo "[install.sh]-- ssh config linking failed"
