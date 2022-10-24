@@ -6,6 +6,9 @@ if [ $(id -u) != "0" ]; then
     exit
 fi
 
+failedPackages=()
+failedLinks=()
+
 usage() {
     echo "usage: install.sh [OPTION] SUBCOMMAND"
     echo "Possible Options:"
@@ -50,78 +53,201 @@ installUwUFetch() {
 
 installMin() {
     echo "[install.sh]-- updating sources"
-    apt update &> /dev/null
+    if apt update &> /dev/null; then
+        echo "[install.sh]-- sources updated"
+    else
+        echo "[install.sh]-- failed to update sources"
+        echo "[install.sh]-- check your internet connection"
+        exit
+    fi
 
     echo "[install.sh]-- Installing Git"
-    apt install -y git &> /dev/null
+    if apt install -y git &> /dev/null; then
+        echo "[install.sh]-- Git installed"
+    else
+        echo "[install.sh]-- Git installation failed"
+        failedPackages+=("git")
+    fi
 
     echo "[install.sh]-- Installing curl"
-    apt install -y curl &> /dev/null
+    if apt install -y curl &> /dev/null; then
+        echo "[install.sh]-- curl installed"
+    else
+        echo "[install.sh]-- curl installation failed"
+        failedPackages+=("curl")
+    fi
 
     # maybe download the package with curl
     echo "[install.sh]-- Installing VScode"
-    snap install code &> /dev/null
+    if snap install code &> /dev/null; then
+        echo "[install.sh]-- VScode installed"
+    else
+        echo "[install.sh]-- VScode installation failed"
+        failedPackages+=("code")
+    fi
 
     echo "[install.sh]-- Installing tmux"
-    apt install -y tmux &> /dev/null
+    if apt install -y tmux &> /dev/null; then
+        echo "[install.sh]-- tmux installed"
+    else
+        echo "[install.sh]-- tmux installation failed"
+        failedPackages+=("tmux")
+    fi
 
     echo "[install.sh]-- Installing tmux cpu and memory program"
-    installTmuxCpuMemProgram &> /dev/null
+    if installTmuxCpuMemProgram &> /dev/null; then
+        echo "[install.sh]-- tmux cpu and memory program installed"
+    else
+        echo "[install.sh]-- tmux cpu and memory program installation failed"
+        failedPackages+=("tmux cpu and memory program")
+    fi
 
     echo "[install.sh]-- Installing zsh"
-    apt install -y zsh  &> /dev/null
-    chsh -s $(which zsh) &> /dev/null
+    if apt install -y zsh  &> /dev/null; then
+        echo "[install.sh]-- zsh installed"
+    else
+        echo "[install.sh]-- zsh installation failed"
+        failedPackages+=("zsh")
+    fi
+    if chsh -s $(which zsh) &> /dev/null; then
+        echo "[install.sh]-- zsh set as default shell"
+    else
+        echo "[install.sh]-- zsh could not be set as default shell"
+        failedPackages+=("zsh")
+    fi
 
     echo "[install.sh]-- Installing omz"
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null
+    if sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null; then
+        echo "[install.sh]-- omz installed"
+    else
+        echo "[install.sh]-- omz installation failed"
+        failedPackages+=("omz")
+    fi
 
     echo "[install.sh]-- Installing python3"
-    apt install -y python3 &> /dev/null
-    apt install -y python3-pip &> /dev/null
+    if apt install -y python3 &> /dev/null; then
+        echo "[install.sh]-- python3 installed"
+    else
+        echo "[install.sh]-- python3 installation failed"
+        failedPackages+=("python3")
+    fi
+    
+    echo "[install.sh]-- Installing python3-pip"
+    if apt install -y python3-pip &> /dev/null; then
+        echo "[install.sh]-- python3-pip installed"
+    else
+        echo "[install.sh]-- python3-pip installation failed"
+        failedPackages+=("python3-pip")
+    fi
 }
 
 installFull() {
     echo "[install.sh]-- upgrading system"
-    apt upgrade -y &> /dev/null
+    if apt upgrade -y &> /dev/null; then
+        echo "[install.sh]-- system upgraded"
+    else
+        echo "[install.sh]-- system upgrade failed"
+    fi
 
     echo "[install.sh]-- Installing UwUFetch"
-    installUwUFetch &> /dev/null
+    if installUwUFetch &> /dev/null; then
+        echo "[install.sh]-- UwUFetch installed"
+    else
+        echo "[install.sh]-- UwUFetch installation failed"
+        failedPackages+=("UwUFetch")
+    fi
 
     echo "[install.sh]-- Installing Neofetch"
-    apt install -y neofetch &> /dev/null
+    if apt install -y neofetch &> /dev/null; then
+        echo "[install.sh]-- Neofetch installed"
+    else
+        echo "[install.sh]-- Neofetch installation failed"
+        failedPackages+=("Neofetch")
+    fi
 
     echo "[install.sh]-- Installing htop"
-    apt install -y htop &> /dev/null
+    if apt install -y htop &> /dev/null; then
+        echo "[install.sh]-- htop installed"
+    else
+        echo "[install.sh]-- htop installation failed"
+        failedPackages+=("htop")
+    fi
 
     echo "[install.sh]-- Installing nyancat"
-    apt install -y nyancat &> /dev/null
+    if apt install -y nyancat &> /dev/null; then
+        echo "[install.sh]-- nyancat installed"
+    else
+        echo "[install.sh]-- nyancat installation failed"
+        failedPackages+=("nyancat")
+    fi
 }
 
 linkMin() {
     echo "[install.sh]-- Linking .gitconfig"
     rm -rf ~/.gitconfig
-    ln -s $(pwd)/.gitconfig ~/.gitconfig
+    if ln -s $(pwd)/.gitconfig ~/.gitconfig; then
+        echo "[install.sh]-- .gitconfig linked"
+    else
+        echo "[install.sh]-- .gitconfig linking failed"
+        failedLinks+=(".gitconfig")
+    fi
 
-    echo "[install.sh]-- Linking .vscode"
+    echo "[install.sh]-- Linking VScode settings"
     mkdir -p ~/.config/Code/User
-    ln -s $(pwd)/VScode/settings.json ~/.config/Code/User/settings.json
-    ln -s $(pwd)/VScode/snippets ~/.config/Code/User/snippets
+    if ln -s $(pwd)/VScode/settings.json ~/.config/Code/User/settings.json; then
+        echo "[install.sh]-- VScode settings linked"
+    else
+        echo "[install.sh]-- VScode settings linking failed"
+        failedLinks+=("VScode settings")
+    fi
+    if ln -s $(pwd)/VScode/snippets ~/.config/Code/User/snippets; then
+        echo "[install.sh]-- VScode snippets linked"
+    else
+        echo "[install.sh]-- VScode snippets linking failed"
+        failedLinks+=("VScode snippets")
+    fi
 
     echo "[install.sh]-- Linking .tmux.conf"
     rm -rf ~/.tmux.conf
-    ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+    if ln -s $(pwd)/.tmux.conf ~/.tmux.conf; then
+        echo "[install.sh]-- .tmux.conf linked"
+    else
+        echo "[install.sh]-- .tmux.conf linking failed"
+        failedLinks+=(".tmux.conf")
+    fi
 
     echo "[install.sh]-- Linking .zshrc"
     rm -rf ~/.zshrc
     rm -rf ~/.fzf.zsh
-    ln -s $(pwd)/.zshrc ~/.zshrc
-    ln -s $(pwd)/.fzf.zsh ~/.fzf.zsh
-    ln -s $(pwd)/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme
+    rm -rf ~/.oh-my-zsh/themes/cute.zsh-theme
+    if ln -s $(pwd)/.zshrc ~/.zshrc; then
+        echo "[install.sh]-- .zshrc linked"
+    else
+        echo "[install.sh]-- .zshrc linking failed"
+        failedLinks+=(".zshrc")
+    fi
+    if ln -s $(pwd)/.fzf.zsh ~/.fzf.zsh; then
+        echo "[install.sh]-- .fzf.zsh linked"
+    else
+        echo "[install.sh]-- .fzf.zsh linking failed"
+        failedLinks+=(".fzf.zsh")
+    fi
+    if ln -s $(pwd)/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme; then
+        echo "[install.sh]-- cute.zsh-theme linked"
+    else
+        echo "[install.sh]-- cute.zsh-theme linking failed"
+        failedLinks+=("cute.zsh-theme")
+    fi
 
     echo "[install.sh]-- Linking ssh config"
     mkdir -p ~/GitHub/Uni/
     mkdir -p ~/.ssh
-    ln -s $(pwd)/Uni/sshConfig ~/.ssh/config
+    if ln -s $(pwd)/Uni/sshConfig ~/.ssh/config; then
+        echo "[install.sh]-- ssh config linked"
+    else
+        echo "[install.sh]-- ssh config linking failed"
+        failedLinks+=("ssh config")
+    fi
 }
 
 linkFull() {
@@ -171,3 +297,11 @@ elif [ $installType == "full" ]; then
     linkMin
     linkFull
 fi
+
+for package in "${failedPackages[@]}"; do
+    echo "Failed to install: $package"
+done
+
+for link in "${failedLinks[@]}"; do
+    echo "Failed to link: $link"
+done
