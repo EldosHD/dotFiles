@@ -179,8 +179,8 @@ installFull() {
 
 linkMin() {
     echo "[install.sh]-- Linking .gitconfig"
-    rm -rf ~/.gitconfig
-    if ln -s $HOME/.gitconfig ~/.gitconfig; then
+    rm -rf home/$SUDO_USER/.gitconfig
+    if ln -s $(pwd)/.gitconfig /home/$SUDO_USER/.gitconfig; then
         echo "[install.sh]-- .gitconfig linked"
     else
         echo "[install.sh]-- .gitconfig linking failed"
@@ -188,16 +188,16 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking VScode settings"
-    mkdir -p ~/.config/Code/User
-    rm -rf ~/.config/Code/User/settings.json
-    rm -rf ~/.config/Code/User/snippets
-    if ln -s $HOME/VScode/settings.json ~/.config/Code/User/settings.json; then
+    mkdir -p home/$SUDO_USER/.config/Code/User
+    rm -rf home/$SUDO_USER/.config/Code/User/settings.json
+    rm -rf home/$SUDO_USER/.config/Code/User/snippets
+    if ln -s $(pwd)/VScode/settings.json home/$SUDO_USER/.config/Code/User/settings.json; then
         echo "[install.sh]-- VScode settings linked"
     else
         echo "[install.sh]-- VScode settings linking failed"
         failedLinks+=("VScode settings")
     fi
-    if ln -s $HOME/VScode/snippets ~/.config/Code/User/snippets; then
+    if ln -s $(pwd)/VScode/snippets /home/$SUDO_USER/.config/Code/User/snippets; then
         echo "[install.sh]-- VScode snippets linked"
     else
         echo "[install.sh]-- VScode snippets linking failed"
@@ -205,8 +205,8 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .tmux.conf"
-    rm -rf ~/.tmux.conf
-    if ln -s $HOME/.tmux.conf ~/.tmux.conf; then
+    rm -rf /home/$SUDO_USER/.tmux.conf
+    if ln -s $(pwd)/.tmux.conf /home/$SUDO_USER/.tmux.conf; then
         echo "[install.sh]-- .tmux.conf linked"
     else
         echo "[install.sh]-- .tmux.conf linking failed"
@@ -214,22 +214,22 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .zshrc"
-    rm -rf ~/.zshrc
-    rm -rf ~/.fzf.zsh
-    rm -rf ~/.oh-my-zsh/themes/cute.zsh-theme
-    if ln -s $HOME/.zshrc ~/.zshrc; then
+    rm -rf /home/$SUDO_USER/.zshrc
+    rm -rf /home/$SUDO_USER/.fzf.zsh
+    rm -rf /home/$SUDO_USER/.oh-my-zsh/themes/cute.zsh-theme
+    if ln -s $(pwd)/.zshrc /home/$SUDO_USER/.zshrc; then
         echo "[install.sh]-- .zshrc linked"
     else
         echo "[install.sh]-- .zshrc linking failed"
         failedLinks+=(".zshrc")
     fi
-    if ln -s $HOME/.fzf.zsh ~/.fzf.zsh; then
+    if ln -s $(pwd)/.fzf.zsh /home/$SUDO_USER/.fzf.zsh; then
         echo "[install.sh]-- .fzf.zsh linked"
     else
         echo "[install.sh]-- .fzf.zsh linking failed"
         failedLinks+=(".fzf.zsh")
     fi
-    if ln -s $HOME/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme; then
+    if ln -s $(pwd)/cute.zsh-theme /home/$SUDO_USER/.oh-my-zsh/themes/cute.zsh-theme; then
         echo "[install.sh]-- cute.zsh-theme linked"
     else
         echo "[install.sh]-- cute.zsh-theme linking failed"
@@ -237,10 +237,10 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking ssh config"
-    mkdir -p ~/GitHub/Uni/
-    mkdir -p ~/.ssh
-    mv ~/.ssh/config ~/.ssh/config.bak
-    if ln -s $HOME/Uni/sshConfig ~/.ssh/config; then
+    mkdir -p /home/$SUDO_USER/GitHub/Uni/
+    mkdir -p /home/$SUDO_USER/.ssh
+    mv /home/$SUDO_USER/.ssh/config /home/$SUDO_USER/.ssh/config.bak
+    if ln -s $(pwd)/Uni/sshConfig ~/.ssh/config; then
         echo "[install.sh]-- ssh config linked"
     else
         echo "[install.sh]-- ssh config linking failed"
