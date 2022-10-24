@@ -38,6 +38,7 @@ installUwUFetch() {
 }
 
 installMin() {
+    echo "[install.sh]-- updating sources"
     apt update &> /dev/null
 
     echo "[install.sh]-- Installing Git"
@@ -68,6 +69,7 @@ installMin() {
 }
 
 installFull() {
+    echo "[install.sh]-- upgrading system"
     apt upgrade -y &> /dev/null
 
     echo "[install.sh]-- Installing UwUFetch"
