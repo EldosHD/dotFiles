@@ -81,19 +81,12 @@ installMin() {
 
     # TODO: vscode download failed
     echo "[install.sh]-- Installing VScode"
-    if wget https://code.visualstudio.com/sha/download\?build\=stable\&os\=linux-deb-x64 >vscode.deb &>/dev/null; then
-        echo "[install.sh]-- VScode downloaded"
-        if dpkg -i ./vscode.deb; then
-            echo "[install.sh]-- VScode installed"
-        else
-            echo "[install.sh]-- VScode installation failed"
-            failedPackages+=("vscode")
-        fi
+    if sudo snap install code --classic &>/dev/null; then
+        echo "[install.sh]-- VScode installed"
     else
-        echo "[install.sh]-- VScode download failed"
+        echo "[install.sh]-- VScode installation failed"
         failedPackages+=("vscode")
-    fi
-    rm -f vscode.deb &>/dev/null
+    fi 
 
     echo "[install.sh]-- Installing tmux"
     if apt install -y tmux &>/dev/null; then
