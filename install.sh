@@ -75,7 +75,7 @@ installMin() {
     echo "[install.sh]-- Installing VScode"
     if curl "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o vscode.deb &> /dev/null; then
         echo "[install.sh]-- VScode downloaded"
-        if dpkg -i ./vscode.deb &> /dev/null; then
+        if dpkg -i ./vscode.deb; then
             echo "[install.sh]-- VScode installed"
         else
             echo "[install.sh]-- VScode installation failed"
@@ -119,7 +119,7 @@ installMin() {
 
     # TODO: https://stackoverflow.com/questions/37360258/unreachable-command-in-a-shell-script-code-while-installing-oh-my-zsh
     echo "[install.sh]-- Installing omz"
-    if omz version &> /dev/null; then
+    if omz version; then
         echo "[install.sh]-- omz already installed"
     else
         if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null; then
@@ -300,27 +300,23 @@ fi
 echo "Install Type: $installType"
 
 if [ $installType == "minimal" ]; then
-    echo "[install.sh]-- Installing minimal packages"
+    printf "\n[install.sh]-- Installing minimal packages\n"
     installMin
-    echo "[install.sh]-- Linking minimal files"
+    printf "\n[install.sh]-- Linking minimal files\n"
     linkMin
 elif [ $installType == "full" ]; then
-    echo ""
-    echo "[install.sh]-- Installing full packages"
+    printf "\n[install.sh]-- Installing full packages\n"
     installMin
     installFull
-    echo ""
-    echo "[install.sh]-- Linking full files"
+    printf "\n[install.sh]-- Linking full files\n"
     linkMin
     linkFull
 fi
 
-echo ""
 for package in "${failedPackages[@]}"; do
     echo "Failed to install: $package"
 done
-
-echo ""
+printf "\n"
 for link in "${failedLinks[@]}"; do
     echo "Failed to link: $link"
 done
