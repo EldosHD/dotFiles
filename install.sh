@@ -58,6 +58,7 @@ installMin() {
     echo "[install.sh]-- Installing curl"
     apt install -y curl &> /dev/null
 
+    # maybe download the package with curl
     echo "[install.sh]-- Installing VScode"
     snap install code &> /dev/null
 
@@ -155,9 +156,12 @@ fi
 
 echo "Install Type: $installType"
 
-installMin
-if [ $installType == "full" ]; then
+if [ $installType == "minimal" ]; then
+    installMin
+    linkMin
+elif [ $installType == "full" ]; then
+    installMin
     installFull
+    linkMin
     linkFull
 fi
-linkMin
