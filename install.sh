@@ -243,7 +243,10 @@ linkMin() {
 
     echo "[install.sh]-- Linking ssh config"
     mkdir -p /home/$SUDO_USER/GitHub/Uni/ &>/dev/null
-    mkdir -p /home/$S"l.sh]-- ssh config linked"
+    mkdir -p /home/$SUDO_USER/.ssh/ &>/dev/null
+    mv /home/$SUDO_USER/.ssh/config /home/$SUDO_USER/.ssh/config.bak &>/dev/null
+    if ln -s $(pwd)/Uni/sshConfig /home/$SUDO_USER/.ssh/config; then
+        echo "[install.sh]-- ssh config linked"
     else
         echo "[install.sh]-- ssh config linking failed"
         failedLinks+=("ssh config")
