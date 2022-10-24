@@ -87,13 +87,6 @@ installMin() {
     fi
     rm vscode.deb &> /dev/null
 
-    if snap install code &> /dev/null; then
-        echo "[install.sh]-- VScode installed"
-    else
-        echo "[install.sh]-- VScode installation failed"
-        failedPackages+=("code")
-    fi
-
     echo "[install.sh]-- Installing tmux"
     if apt install -y tmux &> /dev/null; then
         echo "[install.sh]-- tmux installed"
@@ -124,6 +117,7 @@ installMin() {
         failedPackages+=("zsh")
     fi
 
+    # TODO: https://stackoverflow.com/questions/37360258/unreachable-command-in-a-shell-script-code-while-installing-oh-my-zsh
     echo "[install.sh]-- Installing omz"
     if omz version &> /dev/null; then
         echo "[install.sh]-- omz already installed"
@@ -288,6 +282,7 @@ done
 ARG1=${@:$OPTIND:1}
 
 case "$ARG1" in
+min) installType="minimal" ;;
 minimal) installType="minimal" ;;
 custom)
     installType="custom"
