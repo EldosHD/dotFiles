@@ -179,25 +179,26 @@ installFull() {
 
 linkMin() {
     echo "[install.sh]-- Linking .gitconfig"
-    rm -rf /home/$SUDO_USER/.gitconfig &>/dev/null
+    rm -f /home/$SUDO_USER/.gitconfig &>/dev/null
     if ln -s $(pwd)/.gitconfig /home/$SUDO_USER/.gitconfig; then
         echo "[install.sh]-- .gitconfig linked"
     else
         echo "[install.sh]-- .gitconfig linking failed"
         failedLinks+=(".gitconfig")
     fi
+    # TODO: uni gitconf 
 
     echo "[install.sh]-- Linking VScode settings"
     mkdir -p /home/$SUDO_USER/.config/Code/User &>/dev/null
-    rm -rf /home/$SUDO_USER/.config/Code/User/settings.json &>/dev/null
-    rm -rf /home/$SUDO_USER/.config/Code/User/snippets &>/dev/null
-    if ln -s $(pwd)/VScode/settings.json /home/$SUDO_USER/.config/Code/User/settings.json; then
+    rm -f /home/$SUDO_USER/.config/Code/User/settings.json &>/dev/null
+    rm -f /home/$SUDO_USER/.config/Code/User/snippets &>/dev/null
+    if ln -s $(pwd)/VScode/settings.json /home/$SUDO_USER/.dotFiles/.config/Code/User/settings.json; then
         echo "[install.sh]-- VScode settings linked"
     else
         echo "[install.sh]-- VScode settings linking failed"
         failedLinks+=("VScode settings")
     fi
-    if ln -s $(pwd)/VScode/snippets /home/$SUDO_USER/.config/Code/User/snippets; then
+    if ln -s $(pwd)/VScode/snippets /home/$SUDO_USER/.dotFiles/.config/Code/User/snippets; then
         echo "[install.sh]-- VScode snippets linked"
     else
         echo "[install.sh]-- VScode snippets linking failed"
@@ -205,8 +206,8 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .tmux.conf"
-    rm -rf /home/$SUDO_USER/.tmux.conf 
-    if ln -s $(pwd)/.tmux.conf /home/$SUDO_USER/.tmux.conf; then
+    rm -f /home/$SUDO_USER/.tmux.conf 
+    if ln -s $(pwd)/.tmux.conf /home/$SUDO_USER/.dotFiles/.tmux.conf; then
         echo "[install.sh]-- .tmux.conf linked"
     else
         echo "[install.sh]-- .tmux.conf linking failed"
@@ -214,9 +215,9 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .zshrc"
-    rm -rf /home/$SUDO_USER/.zshrc &>/dev/null
-    rm -rf /home/$SUDO_USER/.fzf.zsh &>/dev/null
-    rm -rf /home/$SUDO_USER/.oh-my-zsh/themes/cute.zsh-theme &>/dev/null
+    rm -f /home/$SUDO_USER/.zshrc &>/dev/null
+    rm -f /home/$SUDO_USER/.fzf.zsh &>/dev/null
+    rm -f /home/$SUDO_USER/.oh-my-zsh/themes/cute.zsh-theme &>/dev/null
     if ln -s $(pwd)/.zshrc /home/$SUDO_USER/.zshrc; then
         echo "[install.sh]-- .zshrc linked"
     else
