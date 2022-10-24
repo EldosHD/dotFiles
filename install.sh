@@ -73,6 +73,20 @@ installMin() {
 
     # maybe download the package with curl
     echo "[install.sh]-- Installing VScode"
+    if curl https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 > vscode.deb; then
+        echo "[install.sh]-- VScode downloaded"
+        if apt install -y ./vscode.deb &> /dev/null; then
+            echo "[install.sh]-- VScode installed"
+        else
+            echo "[install.sh]-- VScode installation failed"
+            failedPackages+=("vscode")
+        fi
+    else
+        echo "[install.sh]-- VScode download failed"
+        failedPackages+=("vscode")
+    fi
+    rm vscode.deb &> /dev/null
+
     if snap install code &> /dev/null; then
         echo "[install.sh]-- VScode installed"
     else
@@ -111,11 +125,15 @@ installMin() {
     fi
 
     echo "[install.sh]-- Installing omz"
-    if sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null; then
-        echo "[install.sh]-- omz installed"
+    if omz version &> /dev/null; then
+        echo "[install.sh]-- omz already installed"
     else
-        echo "[install.sh]-- omz installation failed"
-        failedPackages+=("omz")
+        if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null; then
+            echo "[install.sh]-- omz installed"
+        else
+            echo "[install.sh]-- omz installation failed"
+            failedPackages+=("omz")
+        fi
     fi
 
     echo "[install.sh]-- Installing python3"
@@ -248,7 +266,7 @@ linkMin() {
 }
 
 linkFull() {
-    echo "[install.sh]-- full installation does not need linking currently"
+    # full installation does not need linking currently 
 }
 
 
