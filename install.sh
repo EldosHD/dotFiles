@@ -71,11 +71,11 @@ installMin() {
         failedPackages+=("curl")
     fi
 
-    # maybe download the package with curl
+    # TODO: vscode download failed
     echo "[install.sh]-- Installing VScode"
-    if curl https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -o vscode.deb &> /dev/null; then
+    if curl "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o vscode.deb &> /dev/null; then
         echo "[install.sh]-- VScode downloaded"
-        if apt install -y ./vscode.deb &> /dev/null; then
+        if dpkg -i ./vscode.deb &> /dev/null; then
             echo "[install.sh]-- VScode installed"
         else
             echo "[install.sh]-- VScode installation failed"
