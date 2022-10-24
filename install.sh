@@ -73,7 +73,7 @@ installMin() {
 
     # maybe download the package with curl
     echo "[install.sh]-- Installing VScode"
-    if curl https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 > vscode.deb; then
+    if curl https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -o vscode.deb &> /dev/null; then
         echo "[install.sh]-- VScode downloaded"
         if apt install -y ./vscode.deb &> /dev/null; then
             echo "[install.sh]-- VScode installed"
@@ -85,7 +85,7 @@ installMin() {
         echo "[install.sh]-- VScode download failed"
         failedPackages+=("vscode")
     fi
-    rm vscode.deb &> /dev/null
+    rm -f vscode.deb &> /dev/null
 
     echo "[install.sh]-- Installing tmux"
     if apt install -y tmux &> /dev/null; then
