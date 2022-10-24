@@ -301,15 +301,15 @@ if [ $installType == "minimal" ]; then
     printf "\n[install.sh]-- Installing minimal packages"
     printf "\n"
     installMin
-    printf "\n[install.sh]-- Linking minimal files\n "
+    printf "\n[install.sh]-- Linking minimal files"
     printf "\n"
     linkMin
 elif [ $installType == "full" ]; then
-    printf "\n[install.sh]-- Installing full packages\n "
+    printf "\n[install.sh]-- Installing full packages"
     printf "\n"
     installMin
     installFull
-    printf "\n[install.sh]-- Linking full files\n "
+    printf "\n[install.sh]-- Linking full files"
     printf "\n"
     linkMin
     linkFull
