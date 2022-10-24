@@ -99,22 +99,28 @@ installFull() {
 
 linkMin() {
     echo "[install.sh]-- Linking .gitconfig"
+    rm -rf ~/.gitconfig
     ln -s $(pwd)/.gitconfig ~/.gitconfig
 
     echo "[install.sh]-- Linking .vscode"
+    mkdir -p ~/.config/Code/User
     ln -s $(pwd)/VScode/settings.json ~/.config/Code/User/settings.json
     ln -s $(pwd)/VScode/snippets ~/.config/Code/User/snippets
 
     echo "[install.sh]-- Linking .tmux.conf"
+    rm -rf ~/.tmux.conf
     ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 
     echo "[install.sh]-- Linking .zshrc"
+    rm -rf ~/.zshrc
+    rm -rf ~/.fzf.zsh
     ln -s $(pwd)/.zshrc ~/.zshrc
     ln -s $(pwd)/.fzf.zsh ~/.fzf.zsh
     ln -s $(pwd)/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme
 
     echo "[install.sh]-- Linking ssh config"
     mkdir -p ~/GitHub/Uni/
+    mkdir -p ~/.ssh
     ln -s $(pwd)/Uni/sshConfig ~/.ssh/config
 }
 
