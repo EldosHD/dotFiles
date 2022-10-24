@@ -267,6 +267,7 @@ linkMin() {
 
 linkFull() {
     # full installation does not need linking currently 
+    echo ""
 }
 
 
