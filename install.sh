@@ -49,7 +49,7 @@ installMin() {
     apt install -y tmux
 
     echo "[install.sh]-- Installing tmux cpu and memory program"
-    installTmuxCpuMemProgram()
+    installTmuxCpuMemProgram
 
     echo "[install.sh]-- Installing zsh"
     apt install -y zsh
@@ -61,7 +61,7 @@ installMin() {
 
 installFull() {
     echo "[install.sh]-- Installing UwUFetch"
-    installUwUFetch()
+    installUwUFetch
 
     echo "[install.sh]-- Installing Neofetch"
     apt install -y neofetch
@@ -132,11 +132,11 @@ fi
 echo "Install Type: $installType"
 
 if [ $installType == "full" ] || [ $installType == "minimal" ]; then
-    installMin()
-    linkMin()
+    installMin
+    linkMin
 fi
 
 if [ $installType == "full" ]; then
-    installFull()
-    linkFull()
+    installFull
+    linkFull
 fi
