@@ -79,7 +79,6 @@ installMin() {
         failedPackages+=("wget")
     fi
 
-    # TODO: vscode download failed
     echo "[install.sh]-- Installing VScode"
     if sudo snap install code --classic &>/dev/null; then
         echo "[install.sh]-- VScode installed"
@@ -118,16 +117,15 @@ installMin() {
         failedPackages+=("zsh")
     fi
 
-    # TODO: https://stackoverflow.com/questions/37360258/unreachable-command-in-a-shell-script-code-while-installing-oh-my-zsh
-    echo "[install.sh]-- Installing omz"
-    if omz version; then
-        echo "[install.sh]-- omz already installed"
+    if [ -d ~/.oh-my-zsh ]; then
+        echo "[install.sh]-- oh-my-zsh already installed"
     else
-        if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null; then
-            echo "[install.sh]-- omz installed"
+        echo "[install.sh]-- Installing oh-my-zsh"
+        if sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null; then
+            echo "[install.sh]-- oh-my-zsh installed"
         else
-            echo "[install.sh]-- omz installation failed"
-            failedPackages+=("omz")
+            echo "[install.sh]-- oh-my-zsh installation failed"
+            failedPackages+=("oh-my-zsh")
         fi
     fi
 
@@ -300,15 +298,15 @@ fi
 echo "Install Type: $installType"
 
 if [ $installType == "minimal" ]; then
-    printf "\n[install.sh]-- Installing minimal packages\n"
+    printf "\n[install.sh]-- Installing minimal packages\n "
     installMin
-    printf "\n[install.sh]-- Linking minimal files\n"
+    printf "\n[install.sh]-- Linking minimal files\n "
     linkMin
 elif [ $installType == "full" ]; then
-    printf "\n[install.sh]-- Installing full packages\n"
+    printf "\n[install.sh]-- Installing full packages\n "
     installMin
     installFull
-    printf "\n[install.sh]-- Linking full files\n"
+    printf "\n[install.sh]-- Linking full files\n "
     linkMin
     linkFull
 fi
