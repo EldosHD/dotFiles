@@ -8,6 +8,7 @@ fi
 
 failedPackages=()
 failedLinks=()
+startWokringDir=$(pwd)
 
 # TODO: add only link and only install options
 usage() {
@@ -17,8 +18,9 @@ usage() {
     echo "   -h      | show this help message and exit"
     echo "Possible subcommands:"
     echo "    full   | full installation (also runs apt upgrade)"
-    echo "    custom | custom installation"
     echo "    min    | minimal installtion"
+    echo "    links  | only create symlinks"
+    echo "    pack    | only install packages"
     exit
 }
 
@@ -178,6 +180,7 @@ installFull() {
 }
 
 linkMin() {
+    cd $startWokringDir
     echo "----Linking---- pwd: $(pwd)"
     echo "[install.sh]-- Linking .gitconfig"
     rm -f /home/$SUDO_USER/.gitconfig &>/dev/null
@@ -240,10 +243,7 @@ linkMin() {
 
     echo "[install.sh]-- Linking ssh config"
     mkdir -p /home/$SUDO_USER/GitHub/Uni/ &>/dev/null
-    mkdir -p /home/$SUDO_USER/.ssh &>/dev/null
-    mv /home/$SUDO_USER/.ssh/config /home/$SUDO_USER/.ssh/config.bak &>/dev/null
-    if ln -s $(pwd)/Uni/sshConfig /home/$SUDO_USER/.ssh/config; then
-        echo "[install.sh]-- ssh config linked"
+    mkdir -p /home/$S"l.sh]-- ssh config linked"
     else
         echo "[install.sh]-- ssh config linking failed"
         failedLinks+=("ssh config")
@@ -272,14 +272,10 @@ done
 ARG1=${@:$OPTIND:1}
 
 case "$ARG1" in
-min) installType="minimal" ;;
-minimal) installType="minimal" ;;
-custom)
-    installType="custom"
-    echo "TODO: This feature is not implemented yet."
-    exit 1
-    ;;
+min | minimal) installType="minimal" ;;
 full) installType="full" ;;
+links | links) installType="links" ;;
+pack | packages) installType="packages" ;;
 *) usage ;;
 esac
 
@@ -305,6 +301,16 @@ elif [ $installType == "full" ]; then
     printf "\n"
     linkMin
     linkFull
+elif [ $installType == "links" ]; then
+    printf "\n[install.sh]-- Linking files"
+    printf "\n"
+    linkMin
+    linkFull
+elif [ $installType == "packages" ]; then
+    printf "\n[install.sh]-- Installing packages"
+    printf "\n"
+    installMin
+    installFull
 fi
 
 for package in "${failedPackages[@]}"; do
