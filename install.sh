@@ -24,6 +24,8 @@ installTmuxCpuMemProgram() {
     cmake .
     make
     sudo make install
+    cd ..
+    rm -rf tmuxLoad
 }
 
 installUwUFetch() {
@@ -31,7 +33,70 @@ installUwUFetch() {
     cd uwufetch
     make build # add "CFLAGS+=-D__IPHONE__" if you are building for iOS
     sudo make install
+    cd ..
+    rm -rf uwufetch
 }
+
+installMin() {
+    apt update
+    echo "[install.sh]-- Installing Git"
+    apt install -y git
+
+    echo "[install.sh]-- Installing VScode"
+    snap install code
+
+    echo "[install.sh]-- Installing tmux"
+    apt install -y tmux
+
+    echo "[install.sh]-- Installing tmux cpu and memory program"
+    installTmuxCpuMemProgram()
+
+    echo "[install.sh]-- Installing zsh"
+    apt install -y zsh
+    chsh -s $(which zsh)
+
+    echo "[install.sh]-- Installing omz"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+installFull() {
+    echo "[install.sh]-- Installing UwUFetch"
+    installUwUFetch()
+
+    echo "[install.sh]-- Installing Neofetch"
+    apt install -y neofetch
+
+    echo "[install.sh]-- Installing htop"
+    apt install -y htop
+
+    echo "[install.sh]-- Installing nyancat"
+    apt install -y nyancat
+}
+
+linkMin() {
+    echo "[install.sh]-- Linking .gitconfig"
+    ln -s $(pwd)/.gitconfig ~/.gitconfig
+
+    echo "[install.sh]-- Linking .vscode"
+    ln -s $(pwd)/VScode/settings.json ~/.config/Code/User/settings.json
+    ln -s $(pwd)/VScode/snippets ~/.config/Code/User/snippets
+
+    echo "[install.sh]-- Linking .tmux.conf"
+    ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+
+    echo "[install.sh]-- Linking .zshrc"
+    ln -s $(pwd)/.zshrc ~/.zshrc
+    ln -s $(pwd)/.fzf.zsh ~/.fzf.zsh
+    ln -s $(pwd)/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme
+
+    echo "[install.sh]-- Linking ssh config"
+    ln -s $(pwd)/Uni/sshConfig ~/.ssh/config
+}
+
+linkFull() {
+    echo "[install.sh]-- full installation does not need linking currently"
+}
+
 
 installType=""
 list=0
@@ -67,16 +132,11 @@ fi
 echo "Install Type: $installType"
 
 if [ $installType == "full" ] || [ $installType == "minimal" ]; then
-    apt update
-    echo "[install.sh]-- Installing Git"
-    apt install -y git
+    installMin()
+    linkMin()
+fi
 
-    echo "[install.sh]-- Installing VScode"
-    snap install code
-
-    echo "[install.sh]-- Installing tmux"
-    apt install -y tmux
-
-    echo "[install.sh]-- Installing zsh + omz"
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [ $installType == "full" ]; then
+    installFull()
+    linkFull()
 fi
