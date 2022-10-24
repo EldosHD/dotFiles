@@ -26,9 +26,9 @@ usage() {
 installPackage() {
     echo "[install.sh] Installing $2"
     if [ "$1" = "apt" ]; then
-        apt install -y $2 2> /dev/null
+        apt install -y $2 2>/dev/null
     elif [ "$1" = "snap" ]; then
-        snap install $2 2> /dev/null
+        snap install $2 2>/dev/null
     fi
 }
 
@@ -53,10 +53,10 @@ installUwUFetch() {
 
 installMin() {
     echo "[install.sh]-- updating sources"
-    apt update &> /dev/null
+    apt update &>/dev/null
 
     echo "[install.sh]-- Installing Git"
-    if apt install -y git &> /dev/null; then
+    if apt install -y git &>/dev/null; then
         echo "[install.sh]-- Git installed"
     else
         echo "[install.sh]-- Git installation failed"
@@ -64,16 +64,24 @@ installMin() {
     fi
 
     echo "[install.sh]-- Installing curl"
-    if apt install -y curl &> /dev/null; then
+    if apt install -y curl &>/dev/null; then
         echo "[install.sh]-- curl installed"
     else
         echo "[install.sh]-- curl installation failed"
         failedPackages+=("curl")
     fi
 
+    echo "[install.sh]-- Installing wget"
+    if apt install -y wget &>/dev/null; then
+        echo "[install.sh]-- wget installed"
+    else
+        echo "[install.sh]-- wget installation failed"
+        failedPackages+=("wget")
+    fi
+
     # TODO: vscode download failed
     echo "[install.sh]-- Installing VScode"
-    if curl "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o vscode.deb &> /dev/null; then
+    if wget https://code.visualstudio.com/sha/download\?build\=stable\&os\=linux-deb-x64 >vscode.deb &>/dev/null; then
         echo "[install.sh]-- VScode downloaded"
         if dpkg -i ./vscode.deb; then
             echo "[install.sh]-- VScode installed"
@@ -85,10 +93,10 @@ installMin() {
         echo "[install.sh]-- VScode download failed"
         failedPackages+=("vscode")
     fi
-    rm -f vscode.deb &> /dev/null
+    rm -f vscode.deb &>/dev/null
 
     echo "[install.sh]-- Installing tmux"
-    if apt install -y tmux &> /dev/null; then
+    if apt install -y tmux &>/dev/null; then
         echo "[install.sh]-- tmux installed"
     else
         echo "[install.sh]-- tmux installation failed"
@@ -96,7 +104,7 @@ installMin() {
     fi
 
     echo "[install.sh]-- Installing tmux cpu and memory program"
-    if installTmuxCpuMemProgram &> /dev/null; then
+    if installTmuxCpuMemProgram &>/dev/null; then
         echo "[install.sh]-- tmux cpu and memory program installed"
     else
         echo "[install.sh]-- tmux cpu and memory program installation failed"
@@ -104,13 +112,13 @@ installMin() {
     fi
 
     echo "[install.sh]-- Installing zsh"
-    if apt install -y zsh  &> /dev/null; then
+    if apt install -y zsh &>/dev/null; then
         echo "[install.sh]-- zsh installed"
     else
         echo "[install.sh]-- zsh installation failed"
         failedPackages+=("zsh")
     fi
-    if chsh -s $(which zsh) &> /dev/null; then
+    if chsh -s $(which zsh) &>/dev/null; then
         echo "[install.sh]-- zsh set as default shell"
     else
         echo "[install.sh]-- zsh could not be set as default shell"
@@ -122,7 +130,7 @@ installMin() {
     if omz version; then
         echo "[install.sh]-- omz already installed"
     else
-        if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null; then
+        if sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null; then
             echo "[install.sh]-- omz installed"
         else
             echo "[install.sh]-- omz installation failed"
@@ -131,15 +139,15 @@ installMin() {
     fi
 
     echo "[install.sh]-- Installing python3"
-    if apt install -y python3 &> /dev/null; then
+    if apt install -y python3 &>/dev/null; then
         echo "[install.sh]-- python3 installed"
     else
         echo "[install.sh]-- python3 installation failed"
         failedPackages+=("python3")
     fi
-    
+
     echo "[install.sh]-- Installing python3-pip"
-    if apt install -y python3-pip &> /dev/null; then
+    if apt install -y python3-pip &>/dev/null; then
         echo "[install.sh]-- python3-pip installed"
     else
         echo "[install.sh]-- python3-pip installation failed"
@@ -149,14 +157,14 @@ installMin() {
 
 installFull() {
     echo "[install.sh]-- upgrading system"
-    if apt upgrade -y &> /dev/null; then
+    if apt upgrade -y &>/dev/null; then
         echo "[install.sh]-- system upgraded"
     else
         echo "[install.sh]-- system upgrade failed"
     fi
 
     echo "[install.sh]-- Installing UwUFetch"
-    if installUwUFetch &> /dev/null; then
+    if installUwUFetch &>/dev/null; then
         echo "[install.sh]-- UwUFetch installed"
     else
         echo "[install.sh]-- UwUFetch installation failed"
@@ -164,7 +172,7 @@ installFull() {
     fi
 
     echo "[install.sh]-- Installing Neofetch"
-    if apt install -y neofetch &> /dev/null; then
+    if apt install -y neofetch &>/dev/null; then
         echo "[install.sh]-- Neofetch installed"
     else
         echo "[install.sh]-- Neofetch installation failed"
@@ -172,7 +180,7 @@ installFull() {
     fi
 
     echo "[install.sh]-- Installing htop"
-    if apt install -y htop &> /dev/null; then
+    if apt install -y htop &>/dev/null; then
         echo "[install.sh]-- htop installed"
     else
         echo "[install.sh]-- htop installation failed"
@@ -180,7 +188,7 @@ installFull() {
     fi
 
     echo "[install.sh]-- Installing nyancat"
-    if apt install -y nyancat &> /dev/null; then
+    if apt install -y nyancat &>/dev/null; then
         echo "[install.sh]-- nyancat installed"
     else
         echo "[install.sh]-- nyancat installation failed"
@@ -260,10 +268,9 @@ linkMin() {
 }
 
 linkFull() {
-    # full installation does not need linking currently 
+    # full installation does not need linking currently
     echo ""
 }
-
 
 installType=""
 list=0
