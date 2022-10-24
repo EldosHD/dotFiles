@@ -9,6 +9,7 @@ fi
 failedPackages=()
 failedLinks=()
 
+# TODO: add only link and only install options
 usage() {
     echo "usage: install.sh [OPTION] SUBCOMMAND"
     echo "Possible Options:"
@@ -19,17 +20,6 @@ usage() {
     echo "    custom | custom installation"
     echo "    min    | minimal installtion"
     exit
-}
-
-# currently not used
-# function accepts a packagemanager and a package name
-installPackage() {
-    echo "[install.sh] Installing $2"
-    if [ "$1" = "apt" ]; then
-        apt install -y $2 2>/dev/null
-    elif [ "$1" = "snap" ]; then
-        snap install $2 2>/dev/null
-    fi
 }
 
 installTmuxCpuMemProgram() {
@@ -190,7 +180,7 @@ installFull() {
 linkMin() {
     echo "[install.sh]-- Linking .gitconfig"
     rm -rf ~/.gitconfig
-    if ln -s $(pwd)/.gitconfig ~/.gitconfig; then
+    if ln -s $HOME/.gitconfig ~/.gitconfig; then
         echo "[install.sh]-- .gitconfig linked"
     else
         echo "[install.sh]-- .gitconfig linking failed"
@@ -201,13 +191,13 @@ linkMin() {
     mkdir -p ~/.config/Code/User
     rm -rf ~/.config/Code/User/settings.json
     rm -rf ~/.config/Code/User/snippets
-    if ln -s $(pwd)/VScode/settings.json ~/.config/Code/User/settings.json; then
+    if ln -s $HOME/VScode/settings.json ~/.config/Code/User/settings.json; then
         echo "[install.sh]-- VScode settings linked"
     else
         echo "[install.sh]-- VScode settings linking failed"
         failedLinks+=("VScode settings")
     fi
-    if ln -s $(pwd)/VScode/snippets ~/.config/Code/User/snippets; then
+    if ln -s $HOME/VScode/snippets ~/.config/Code/User/snippets; then
         echo "[install.sh]-- VScode snippets linked"
     else
         echo "[install.sh]-- VScode snippets linking failed"
@@ -216,7 +206,7 @@ linkMin() {
 
     echo "[install.sh]-- Linking .tmux.conf"
     rm -rf ~/.tmux.conf
-    if ln -s $(pwd)/.tmux.conf ~/.tmux.conf; then
+    if ln -s $HOME/.tmux.conf ~/.tmux.conf; then
         echo "[install.sh]-- .tmux.conf linked"
     else
         echo "[install.sh]-- .tmux.conf linking failed"
@@ -227,19 +217,19 @@ linkMin() {
     rm -rf ~/.zshrc
     rm -rf ~/.fzf.zsh
     rm -rf ~/.oh-my-zsh/themes/cute.zsh-theme
-    if ln -s $(pwd)/.zshrc ~/.zshrc; then
+    if ln -s $HOME/.zshrc ~/.zshrc; then
         echo "[install.sh]-- .zshrc linked"
     else
         echo "[install.sh]-- .zshrc linking failed"
         failedLinks+=(".zshrc")
     fi
-    if ln -s $(pwd)/.fzf.zsh ~/.fzf.zsh; then
+    if ln -s $HOME/.fzf.zsh ~/.fzf.zsh; then
         echo "[install.sh]-- .fzf.zsh linked"
     else
         echo "[install.sh]-- .fzf.zsh linking failed"
         failedLinks+=(".fzf.zsh")
     fi
-    if ln -s $(pwd)/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme; then
+    if ln -s $HOME/cute.zsh-theme ~/.oh-my-zsh/themes/cute.zsh-theme; then
         echo "[install.sh]-- cute.zsh-theme linked"
     else
         echo "[install.sh]-- cute.zsh-theme linking failed"
@@ -250,7 +240,7 @@ linkMin() {
     mkdir -p ~/GitHub/Uni/
     mkdir -p ~/.ssh
     mv ~/.ssh/config ~/.ssh/config.bak
-    if ln -s $(pwd)/Uni/sshConfig ~/.ssh/config; then
+    if ln -s $HOME/Uni/sshConfig ~/.ssh/config; then
         echo "[install.sh]-- ssh config linked"
     else
         echo "[install.sh]-- ssh config linking failed"
