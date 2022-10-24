@@ -121,6 +121,15 @@ installMin() {
         fi
     fi
 
+    # required for zsh theme
+    echo "[install.sh]-- Installing fonts-powerline"
+    if apt install -y fonts-powerline &>/dev/null; then
+        echo "[install.sh]-- fonts-powerline installed"
+    else
+        echo "[install.sh]-- fonts-powerline installation failed"
+        failedPackages+=("fonts-powerline")
+    fi
+
     echo "[install.sh]-- Installing python3"
     if apt install -y python3 &>/dev/null; then
         echo "[install.sh]-- python3 installed"
@@ -181,7 +190,6 @@ installFull() {
 
 linkMin() {
     cd $startWokringDir
-    echo "----Linking---- pwd: $(pwd)"
     echo "[install.sh]-- Linking .gitconfig"
     rm -f /home/$SUDO_USER/.gitconfig &>/dev/null
     if ln -s $(pwd)/.gitconfig /home/$SUDO_USER/.gitconfig; then
@@ -190,7 +198,6 @@ linkMin() {
         echo "[install.sh]-- .gitconfig linking failed"
         failedLinks+=(".gitconfig")
     fi
-    # TODO: uni gitconf 
 
     echo "[install.sh]-- Linking VScode settings"
     mkdir -p /home/$SUDO_USER/.config/Code/User &>/dev/null
