@@ -188,6 +188,8 @@ linkMin() {
 
     echo "[install.sh]-- Linking VScode settings"
     mkdir -p ~/.config/Code/User
+    rm -rf ~/.config/Code/User/settings.json
+    rm -rf ~/.config/Code/User/snippets
     if ln -s $(pwd)/VScode/settings.json ~/.config/Code/User/settings.json; then
         echo "[install.sh]-- VScode settings linked"
     else
@@ -236,6 +238,7 @@ linkMin() {
     echo "[install.sh]-- Linking ssh config"
     mkdir -p ~/GitHub/Uni/
     mkdir -p ~/.ssh
+    mv ~/.ssh/config ~/.ssh/config.bak
     if ln -s $(pwd)/Uni/sshConfig ~/.ssh/config; then
         echo "[install.sh]-- ssh config linked"
     else
@@ -283,19 +286,27 @@ fi
 echo "Install Type: $installType"
 
 if [ $installType == "minimal" ]; then
+    echo "[install.sh]-- Installing minimal packages"
     installMin
+    echo "[install.sh]-- Linking minimal files"
     linkMin
 elif [ $installType == "full" ]; then
+    echo ""
+    echo "[install.sh]-- Installing full packages"
     installMin
     installFull
+    echo ""
+    echo "[install.sh]-- Linking full files"
     linkMin
     linkFull
 fi
 
+echo ""
 for package in "${failedPackages[@]}"; do
     echo "Failed to install: $package"
 done
 
+echo ""
 for link in "${failedLinks[@]}"; do
     echo "Failed to link: $link"
 done
