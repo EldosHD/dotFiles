@@ -12,7 +12,7 @@ usage() {
     echo "   -l      | list all programs and files that will be installed with the selected mode"
     echo "   -h      | show this help message and exit"
     echo "Possible subcommands:"
-    echo "    full   | full installation"
+    echo "    full   | full installation (also runs apt upgrade)"
     echo "    custom | custom installation"
     echo "    min    | minimal installtion"
     exit
@@ -38,7 +38,8 @@ installUwUFetch() {
 }
 
 installMin() {
-    apt update
+    apt update &> /dev/null
+
     echo "[install.sh]-- Installing Git"
     apt install -y git &> /dev/null
 
@@ -60,9 +61,15 @@ installMin() {
 
     echo "[install.sh]-- Installing omz"
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &> /dev/null
+
+    echo "[install.sh]-- Installing python3"
+    apt install -y python3 &> /dev/null
+    apt install -y python3-pip &> /dev/null
 }
 
 installFull() {
+    apt upgrade -y &> /dev/null
+
     echo "[install.sh]-- Installing UwUFetch"
     installUwUFetch &> /dev/null
 
