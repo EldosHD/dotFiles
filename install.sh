@@ -24,6 +24,12 @@ usage() {
     exit
 }
 
+installFzF() {
+    rm -rf /home/$SUDO_USER/.fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git /home/$SUDO_USER/.fzf
+    /home/$SUDO_USER/.fzf/install --key-bindings --completion --no-update-rc
+}
+
 installTmuxCpuMemProgram() {
     git clone https://github.com/thewtex/tmux-mem-cpu-load.git tmuxLoad
     cd tmuxLoad
@@ -144,6 +150,14 @@ installMin() {
     else
         echo "[install.sh]-- python3-pip installation failed"
         failedPackages+=("python3-pip")
+    fi
+
+    echo "[install.sh]-- Installing fzf"
+    if installFzF &>/dev/null; then
+        echo "[install.sh]-- fzf installed"
+    else
+        echo "[install.sh]-- fzf installation failed"
+        failedPackages+=("fzf")
     fi
 }
 
@@ -323,6 +337,7 @@ elif [ $installType == "packages" ]; then
     installFull
 fi
 
+printf "\n\n"
 for package in "${failedPackages[@]}"; do
     echo "Failed to install: $package"
 done
