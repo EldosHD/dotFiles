@@ -26,13 +26,17 @@ usage() {
 
 installFzF() {
     rm -rf /home/$SUDO_USER/.fzf
+    echo "[install.sh]-- cloning repo"
     git clone --depth 1 https://github.com/junegunn/fzf.git /home/$SUDO_USER/.fzf
+    echo "[install.sh]-- finished cloning repo"
     /home/$SUDO_USER/.fzf/install --key-bindings --completion --no-update-rc
 }
 
 installTmuxCpuMemProgram() {
+    echo "[install.sh]-- cloning repo"
     git clone https://github.com/thewtex/tmux-mem-cpu-load.git tmuxLoad
     cd tmuxLoad
+    echo "[install.sh]-- making install"
     cmake .
     make
     sudo make install
@@ -83,7 +87,23 @@ installMin() {
     else
         echo "[install.sh]-- VScode installation failed"
         failedPackages+=("vscode")
-    fi 
+    fi
+
+    echo "[install.sh]-- Installing cmake"
+    if apt install -y cmake &>/dev/null; then
+        echo "[install.sh]-- cmake installed"
+        # program needs cmake to install properly
+        echo "[install.sh]-- Installing tmux cpu and memory program"
+        if installTmuxCpuMemProgram &>/dev/null; then
+            echo "[install.sh]-- tmux cpu and memory program installed"
+        else
+            echo "[install.sh]-- tmux cpu and memory program installation failed"
+            failedPackages+=("tmux cpu and memory program")
+        fi
+    else
+        echo "[install.sh]-- cmake installation failed"
+        failedPackages+=("cmake")
+    fi
 
     echo "[install.sh]-- Installing tmux"
     if apt install -y tmux &>/dev/null; then
@@ -91,14 +111,6 @@ installMin() {
     else
         echo "[install.sh]-- tmux installation failed"
         failedPackages+=("tmux")
-    fi
-
-    echo "[install.sh]-- Installing tmux cpu and memory program"
-    if installTmuxCpuMemProgram &>/dev/null; then
-        echo "[install.sh]-- tmux cpu and memory program installed"
-    else
-        echo "[install.sh]-- tmux cpu and memory program installation failed"
-        failedPackages+=("tmux cpu and memory program")
     fi
 
     echo "[install.sh]-- Installing zsh"
@@ -231,7 +243,7 @@ linkMin() {
     fi
 
     echo "[install.sh]-- Linking .tmux.conf"
-    rm -f /home/$SUDO_USER/.tmux.conf 
+    rm -f /home/$SUDO_USER/.tmux.conf
     if ln -s $(pwd)/.tmux.conf /home/$SUDO_USER/.tmux.conf; then
         echo "[install.sh]-- .tmux.conf linked"
     else
