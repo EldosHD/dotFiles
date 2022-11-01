@@ -125,4 +125,4 @@ eval "$(dircolors ~/.dotFiles/.dircolors)";
 
 
 # start technoart
-technoart -s
+technoart -r
