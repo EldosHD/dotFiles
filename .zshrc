@@ -114,6 +114,28 @@ if [ -d "/usr/local/go/bin" ] ; then
     export PATH="/usr/local/go/bin:$PATH"
 fi
 
+# add devkitpro arm to path
+if [ -d "/opt/devkitpro/devkitARM/bin" ] ; then
+    export PATH="/opt/devkitpro/devkitARM/bin:$PATH"
+fi
+
+# add devkitpro ppc to path
+if [ -d "/opt/devkitpro/devkitPPC/bin" ] ; then
+    export PATH="/opt/devkitpro/devkitPPC/bin:$PATH"
+fi
+
+# set up devkitpro environment variables
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=${DEVKITPRO}/devkitARM
+export DEVKITPPC=${DEVKITPRO}/devkitPPC
+
+export PATH=${DEVKITPRO}/tools/bin:$PATH
+
+# set up wiiload environment variable 
+# this value is the ip of my wii u and might need to be changed often
+# TODO: come up with a better solution than hardcoding the ip
+export WIILLOAD=tcp:192.168.1.104
+
 # change the colorcodes of the "ls -l" output based on the .dircolors file
 eval "$(dircolors ~/.dotFiles/.dircolors)";
 
