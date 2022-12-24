@@ -70,5 +70,10 @@
     },
     "window.zoomLevel": 2,
     "editor.lineNumbers": "relative",
-    "java.jdt.ls.java.home": "/usr/lib/jvm/jdk-17"
+    "java.jdt.ls.java.home": "/usr/lib/jvm/jdk-17",
+
+    // devkitpro stuff
+    "C_Cpp.default.includePath": [
+        "/opt/devkitpro/wut/include/**",
+    ]
 }
