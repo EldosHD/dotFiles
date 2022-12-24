@@ -134,7 +134,7 @@ export PATH=${DEVKITPRO}/tools/bin:$PATH
 # set up wiiload environment variable 
 # this value is the ip of my wii u and might need to be changed often
 # TODO: come up with a better solution than hardcoding the ip
-export WIILLOAD=tcp:192.168.1.104
+export WIILOAD=tcp:192.168.1.104
 
 # change the colorcodes of the "ls -l" output based on the .dircolors file
 eval "$(dircolors ~/.dotFiles/.dircolors)";
