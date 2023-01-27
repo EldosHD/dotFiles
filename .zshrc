@@ -104,6 +104,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+
+# doesnt work with zsh currently
+# shell mommy
+# source shell mommy
+# . ~/shell-mommy/shell-mommy.sh
+# add shell mommy to prompt
+# precmd() { mommy "$PROMPT_COMMAND" } 
+
 # add UwUpp-exe to path
 if [ -d "/home/valentin/.local/bin" ] ; then
     export PATH="/home/valentin/.local/bin:$PATH"
