@@ -136,6 +136,11 @@ export PATH=${DEVKITPRO}/tools/bin:$PATH
 # TODO: come up with a better solution than hardcoding the ip
 export WIILOAD=tcp:192.168.1.103
 
+# JAVA
+export JAVA_HOME=/usr/lib/jvm/jdk-19
+export PATH=$PATH:$JAVA_HOME/bin
+
+
 # change the colorcodes of the "ls -l" output based on the .dircolors file
 eval "$(dircolors ~/.dotFiles/.dircolors)";
 
