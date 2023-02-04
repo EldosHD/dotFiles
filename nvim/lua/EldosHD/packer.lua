@@ -29,6 +29,9 @@ return require('packer').startup(function(use)
     -- git commands
     use('tpope/vim-fugitive')
 
+    -- github copilot
+    use('github/copilot.vim')
+
     -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
