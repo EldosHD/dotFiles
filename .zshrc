@@ -148,6 +148,9 @@ export WIILOAD=tcp:192.168.1.103
 export JAVA_HOME=/usr/lib/jvm/jdk-19
 export PATH=$PATH:$JAVA_HOME/bin
 
+# This loads nvm
+export NVM_DIR="/home/valentin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  
 
 # change the colorcodes of the "ls -l" output based on the .dircolors file
 eval "$(dircolors ~/.dotFiles/.dircolors)";
@@ -161,3 +164,4 @@ eval "$(dircolors ~/.dotFiles/.dircolors)";
 
 # start technoart
 technoart -r
+
