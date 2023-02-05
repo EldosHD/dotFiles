@@ -9,6 +9,11 @@ fonts-powerline
 
 neovim unstable
 evt andere sachen für neovim
+-> Packer github repo muss geclont werden
+-> npm ist notwendig für bash LSP und Copilot
+ -> dafür nvm installieren von (https://github.com/nvm-sh/nvm#installing-and-updating)
+ -> npm mit `nvm install node
+-> ein python3 venv für jedi LSP
 vscode
 
 ##### Tools #####
@@ -17,7 +22,6 @@ curl
 wget
 python3
 python3-pip
-python3-venv
 fzf
 htop
 
