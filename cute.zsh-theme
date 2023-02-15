@@ -156,8 +156,9 @@ prompt_status() {
 # Display current virtual environment
 prompt_virtualenv() {
   if [[ -n $VIRTUAL_ENV ]]; then
-    color=cyan
-    prompt_segment $color $PRIMARY_FG
+    color=white
+    # prompt_segment $color $PRIMARY_FG
+    prompt_segment $color "#000000"
     print -Pn " $(basename $VIRTUAL_ENV) "
   fi
 }
