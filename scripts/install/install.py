@@ -21,12 +21,19 @@ class colors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+ppas = [
+    "ppa:neovim-ppa/unstable",
+]
+
 tools = [
     "curl",
     "wget",
     "git",
     "python3",
     "python3-pip",
+    "fzf",
+    "htop",
+]
 
 
 shell_packages = [
@@ -37,39 +44,78 @@ shell_packages = [
         # tmux mem program
 ]
 
-editors = [
-        "nvim",        
-        # TODO: nvim has to be unstable realease
-]
+
+# Print iterations progress
+# credit: https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
+def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        printEnd    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
+    percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+    filledLength = int(length * iteration // total)
+    bar = fill * filledLength + '-' * (length - filledLength)
+    print(f'\r{prefix} [{bar}] {percent}% {suffix}', end = printEnd)
+    # Print New Line on Complete
+    if iteration == total: 
+        print()
+
+def add_ppas(log_file, no_log):
+    print("Adding PPAs")
+    failed_ppas = []
+    for ppa in ppas:
+        output = run_cmd(["sudo", "add-apt-repository", ppa, "-y"], log_file, no_log)
+        if output.returncode != 0:
+            failed_ppas.append(ppa)
+    if len(failed_ppas) == 0:
+        print(f"{colors.OKGREEN}All PPAs added successfully{colors.ENDC}")
+    return failed_ppas
 
 def link_dotfiles():
     print("Linking dotfiles")
 
 def install_packages(packages, log_file, no_log):
     failed_installations = []
+    printProgressBar(0, len(packages), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     for package in packages:
-        print(f"Installing {package}")
+        # print(f"Installing {package}")
         output = run_cmd(["sudo", "apt", "install", package, "-y"], log_file, no_log)
         if output.returncode != 0:
-            print(f"{colors.FAIL}Failed to install {package}{colors.ENDC}")
+            # print(f"{colors.FAIL}Failed to install {package}{colors.ENDC}")
             failed_installations.append(package)
+        printProgressBar(packages.index(package) + 1, len(packages), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     return failed_installations
 
-def install_tools():
+def install_tools(log_file, no_log):
     print("Installing tools")
+    failed_tool_installations = install_packages(tools, log_file, no_log)
+    return failed_tool_installations
 
-def install_shell():
+def install_shell(log_file, no_log):
     print("Installing shell")
-    failed_shell_installations = install_packages(shell_packages, args.log_file, args.no_log)
-    # TODO: install oh-my-zsh
-    # TODO: tmux mem program
+    failed_shell_installations = install_packages(shell_packages, log_file, no_log)
     return failed_shell_installations 
 
-def install_editors():
+def install_editors(log_file, no_log):
+    # TODOOOO: Editors
     print("Installing editors")
+    failed_editor_installations = []
+    failed_editor_installations.extend(install_packages(["neovim"], log_file, no_log))
+    return failed_editor_installations
 
-def install_misc():
+def install_misc(log_file, no_log):
     print("Installing misc")
+
+def additonal_installations(log_file, no_log):
+    print("Installing additional programs")
 
 def write_to_log(cmd, message, log_file, no_log):
     if not no_log:
@@ -84,6 +130,15 @@ def run_cmd(cmd, log_file, no_log):
     output.stdout = output.stdout.decode("utf-8")
     write_to_log(cmd, output.stdout, log_file, no_log)
     return output
+
+def run_cmd_with_msg(cmd, log_file, no_log, msg_before, msg_after_OK, msg_after_FAIL):
+    print(msg_before)
+    output = run_cmd(cmd, log_file, no_log)
+    if output.returncode == 0:
+        print(f"{colors.OKGREEN}{msg_after_OK}{colors.ENDC}")
+    else:
+        print(f"{colors.FAIL}{msg_after_FAIL}{colors.ENDC}")
+
 
 
 
@@ -112,6 +167,16 @@ if(__name__ == "__main__"):
         args.editors = True
         args.misc = True
 
+    if args.no_color:
+        colors.HEADER = ""
+        colors.OKBLUE = ""
+        colors.OKGREEN = ""
+        colors.WARNING = ""
+        colors.FAIL = ""
+        colors.ENDC = ""
+        colors.BOLD = ""
+        colors.UNDERLINE = ""
+
     if not args.no_log:
         if args.log_file.exists():
             if not args.yes:
@@ -121,24 +186,33 @@ if(__name__ == "__main__"):
                     exit(0)
             os.remove(args.log_file)
 
-    print("Updating packages")
-    update = run_cmd(["sudo", "apt", "update"], args.log_file, args.no_log)
-    upgrade = run_cmd(["sudo", "apt", "upgrade", "-y"], args.log_file, args.no_log)
-    if upgrade.returncode != 0 or update.returncode:
-        print(f"{colors.FAIL}Failed to update packages{colors.ENDC}")
-        exit(1)
-    else:
-        print(f"{colors.OKGREEN}Updated packages{colors.ENDC}")
+    failed_ppas = add_ppas(args.log_file, args.no_log)
+
+    run_cmd_with_msg(["sudo", "apt", "update"], args.log_file, args.no_log, "Updating package list", "Done", "Failed to update package list")
+    run_cmd_with_msg(["sudo", "apt", "upgrade", "-y"], args.log_file, args.no_log, "Upgrading packages", "Done", "Failed to upgrade packages")
+    run_cmd_with_msg(["sudo", "snap", "refresh"], args.log_file, args.no_log, "Refreshing snaps", "Done", "Failed to refresh snaps")
 
     # install packages
     failed_installations = []
 
     if args.shell:
-        failed_installations.extend(install_shell())
+        failed_installations.extend(install_shell(args.log_file, args.no_log))
 
-    print("Done")
+    if args.tools:
+        failed_installations.extend(install_tools(args.log_file, args.no_log))
+
+    if args.editors:
+        failed_installations.extend(install_editors(args.log_file, args.no_log))
+
+    print(f"{colors.OKGREEN}Done{colors.ENDC}")
+    if len(failed_ppas) > 0:
+        print(f"\n\n{colors.FAIL}Failed to add the following PPAs:{colors.ENDC}")
+        for ppa in failed_ppas:
+            print(ppa)
+
     if len(failed_installations) > 0:
         print(f"\n\n{colors.FAIL}Failed to install the following packages:{colors.ENDC}")
         for package in failed_installations:
             print(package)
+
 

@@ -61,12 +61,12 @@
     
         {
             "name": "JavaSE-17",
-            "path": "/usr/lib/jvm/jdk-17"
+            "path": "/usr/lib/jvm/jdk-17",
+            "default": true
         },
         {
             "name": "JavaSE-19",
-            "path": "/usr/lib/jvm/open-jdk-19-adoptium",
-            "default": true
+            "path": "/usr/lib/jvm/open-jdk-19-adoptium"
         }
     ],
     "[plaintext]": {
