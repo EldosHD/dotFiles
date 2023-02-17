@@ -3,6 +3,7 @@ import argparse
 import subprocess
 from pathlib import Path
 import os
+import glob
 
 version = "1.0.0"                                                                              
 description="TODO: Insert description"
@@ -40,8 +41,11 @@ shell_packages = [
         "tmux",
         "zsh",
         "fonts-powerline",
-        # "oh-my-zsh",
-        # tmux mem program
+]
+
+misc = [
+    "neofetch",
+    "nyancat",
 ]
 
 
@@ -71,25 +75,36 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
 def add_ppas(log_file, no_log):
     print("Adding PPAs")
     failed_ppas = []
+    printProgressBar(0, len(ppas), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     for ppa in ppas:
         output = run_cmd(["sudo", "add-apt-repository", ppa, "-y"], log_file, no_log)
         if output.returncode != 0:
             failed_ppas.append(ppa)
-    if len(failed_ppas) == 0:
-        print(f"{colors.OKGREEN}All PPAs added successfully{colors.ENDC}")
+        printProgressBar(ppas.index(ppa) + 1, len(ppas), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     return failed_ppas
 
-def link_dotfiles():
+def upgrade_system(log_file, no_log):
+    print("Upgrading system")
+    upgrade_cmds = [["sudo", "apt", "update"], ["sudo", "apt", "upgrade", "-y"], ["sudo", "snap", "refresh"]]
+    failed_upgrades = []
+    printProgressBar(0, len(upgrade_cmds), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    for cmd in upgrade_cmds:
+        output = run_cmd(cmd, log_file, no_log)
+        if output.returncode != 0:
+            failed_upgrades.append(cmd)
+        printProgressBar(upgrade_cmds.index(cmd) + 1, len(upgrade_cmds), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    return failed_upgrades
+
+def link_dotfiles(log_file, no_log):
     print("Linking dotfiles")
+    print("sry")
 
 def install_packages(packages, log_file, no_log):
     failed_installations = []
     printProgressBar(0, len(packages), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     for package in packages:
-        # print(f"Installing {package}")
         output = run_cmd(["sudo", "apt", "install", package, "-y"], log_file, no_log)
         if output.returncode != 0:
-            # print(f"{colors.FAIL}Failed to install {package}{colors.ENDC}")
             failed_installations.append(package)
         printProgressBar(packages.index(package) + 1, len(packages), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     return failed_installations
@@ -108,14 +123,35 @@ def install_editors(log_file, no_log):
     # TODOOOO: Editors
     print("Installing editors")
     failed_editor_installations = []
-    failed_editor_installations.extend(install_packages(["neovim"], log_file, no_log))
+    editor_cmds = [["sudo", "snap", "install", "code", "--classic"], ["sudo", "apt", "install", "neovim", "-y"]]
+    printProgressBar(0, len(editor_cmds), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    for cmd in editor_cmds:
+        output = run_cmd(cmd, log_file, no_log)
+        if output.returncode != 0:
+            failed_editor_installations.append(cmd)
+        printProgressBar(editor_cmds.index(cmd) + 1, len(editor_cmds), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     return failed_editor_installations
 
 def install_misc(log_file, no_log):
     print("Installing misc")
+    failed_misc_installations = []
+    failed_misc_installations = install_packages(misc, log_file, no_log)
+    return failed_misc_installations
 
-def additonal_installations(log_file, no_log):
+def additional_installations(log_file, no_log):
     print("Installing additional programs")
+    failed_additional_installations = []
+    # get all bash scripts in additional_install_scripts
+    additional_install_scripts = glob.glob("additional_install_scripts/*.sh")
+    printProgressBar(0, len(additional_install_scripts), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    # install bash scripts
+    # TODO: add error handling for scripts since they return 0 even if they fail
+    for script in additional_install_scripts:
+        output = run_cmd(["sudo", "bash", script], log_file, no_log)
+        if output.returncode != 0:
+            failed_additional_installations.append(script)
+        printProgressBar(additional_install_scripts.index(script) + 1, len(additional_install_scripts), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    return failed_additional_installations
 
 def write_to_log(cmd, message, log_file, no_log):
     if not no_log:
@@ -147,12 +183,15 @@ if(__name__ == "__main__"):
 
     parser.add_argument("-v", "--version", help="Print version and exit", action="store_true")
     parser.add_argument("-l", "--list", help="List packages", action="store_true")
+    parser.add_argument("-p", "--ppas", help="Add PPAs", action="store_true")
+    parser.add_argument("-u", "--upgrade", help="Upgrade system", action="store_true")
     parser.add_argument("-L", "--link", help="Link dotfiles", action="store_true")
     parser.add_argument("-a", "--all", help="Install all packages", action="store_true")
     parser.add_argument("-s", "--shell", help="Install shell related packages", action="store_true")
     parser.add_argument("-t", "--tools", help="Install general tools", action="store_true")
     parser.add_argument("-e", "--editors", help="Install all editors that I currently use", action="store_true")
     parser.add_argument("-m", "--misc", help="Install misc packages", action="store_true")
+    parser.add_argument("-A", "--additional", help="Execute the scripts in the additional_install_scripts folder", action="store_true")
     parser.add_argument('-f', '--log-file', help="Specify the log file name. Default is \"log.txt\"", default=Path('log.txt'))
     parser.add_argument("--no-log", help="Don't log output of executed commands", action="store_true", default=False)
     parser.add_argument("--no-color", help="Disable color output", action="store_true")
@@ -161,11 +200,14 @@ if(__name__ == "__main__"):
     args = parser.parse_args()
 
     if args.all:
+        args.ppas = True
+        args.upgrade = True
         args.link = True
         args.shell = True
         args.tools = True
         args.editors = True
         args.misc = True
+        args.additional = True
 
     if args.no_color:
         colors.HEADER = ""
@@ -186,15 +228,22 @@ if(__name__ == "__main__"):
                     exit(0)
             os.remove(args.log_file)
 
-    failed_ppas = add_ppas(args.log_file, args.no_log)
+    # initialize lists for failed installations
+    failed_ppas = []
+    failed_upgrades = []
+    failed_installations = []
+    failed_bash_scripts = []
+    failed_linking = []
+    
+    # add PPAs
+    if args.ppas:
+        failed_ppas = add_ppas(args.log_file, args.no_log)
 
-    run_cmd_with_msg(["sudo", "apt", "update"], args.log_file, args.no_log, "Updating package list", "Done", "Failed to update package list")
-    run_cmd_with_msg(["sudo", "apt", "upgrade", "-y"], args.log_file, args.no_log, "Upgrading packages", "Done", "Failed to upgrade packages")
-    run_cmd_with_msg(["sudo", "snap", "refresh"], args.log_file, args.no_log, "Refreshing snaps", "Done", "Failed to refresh snaps")
+    # upgrade system
+    if args.upgrade:
+        failed_upgrades = upgrade_system(args.log_file, args.no_log)
 
     # install packages
-    failed_installations = []
-
     if args.shell:
         failed_installations.extend(install_shell(args.log_file, args.no_log))
 
@@ -204,15 +253,49 @@ if(__name__ == "__main__"):
     if args.editors:
         failed_installations.extend(install_editors(args.log_file, args.no_log))
 
-    print(f"{colors.OKGREEN}Done{colors.ENDC}")
+    if args.misc:
+        failed_installations.extend(install_misc(args.log_file, args.no_log))
+
+    # run additional bash scripts
+    if args.additional:
+        failed_bash_scripts = additional_installations(args.log_file, args.no_log)
+
+    # link dotfiles
+    if args.link:
+        failed_linking = link_dotfiles(args.log_file, args.no_log)
+
+    if not args.no_log:
+        log = open(args.log_file, "a")
+
+    print(f"\n{colors.OKGREEN}Done{colors.ENDC}")
+    if not args.no_log:
+        log.write("\nDone\n")
+
     if len(failed_ppas) > 0:
-        print(f"\n\n{colors.FAIL}Failed to add the following PPAs:{colors.ENDC}")
+        print(f"\n{colors.FAIL}Failed to add the following PPAs:{colors.ENDC}")
         for ppa in failed_ppas:
             print(ppa)
+            log.write(f"Failed to add PPA: {ppa}")
+
+    if len(failed_upgrades) > 0:
+        print(f"\n{colors.FAIL}Failed to execute the following commands:{colors.ENDC}")
+        for cmd in failed_upgrades:
+            print(' '.join(cmd))
+            log.write(f"Failed to execute command: {' '.join(cmd)}")
 
     if len(failed_installations) > 0:
-        print(f"\n\n{colors.FAIL}Failed to install the following packages:{colors.ENDC}")
+        print(f"\n{colors.FAIL}Failed to install the following packages:{colors.ENDC}")
         for package in failed_installations:
             print(package)
+            log.write(f"Failed to install package: {package}")
+
+    if len(failed_bash_scripts) > 0:
+        print(f"\n{colors.FAIL}Failed to execute the following bash scripts:{colors.ENDC}")
+        for script in failed_bash_scripts:
+            print(script)
+            log.write(f"Failed to execute bash script: {script}")
+
+    if args.no_log:
+        log.close()
 
 
