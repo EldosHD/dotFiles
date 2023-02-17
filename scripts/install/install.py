@@ -48,6 +48,19 @@ misc = [
     "nyancat",
 ]
 
+dotfile_dir = Path.home() / ".dotFiles"
+
+to_link = {
+    Path(dotfile_dir / ".tmux.conf"): Path.home() / ".tmux.conf",
+    Path(dotfile_dir / ".zshrc"): Path.home() / ".zshrc",
+    Path(dotfile_dir / ".fzf.zsh"): Path.home() / ".fzf.zsh",
+    Path(dotfile_dir / ".gitconfig"): Path.home() / ".gitconfig",
+    Path(dotfile_dir / "VScode/settings.json"): Path.home() / ".config/Code/User/settings.json",
+    Path(dotfile_dir / "VScode/snippets/"): Path.home() / ".config/Code/User/snippets",
+    Path(dotfile_dir / "cute.zsh-theme"): Path.home() / ".oh-my-zsh/custom/themes/cute.zsh-theme",
+    Path(dotfile_dir / "Uni/sshConfig"): Path.home() / ".ssh/config",
+    Path(dotfile_dir / "nvim/"): Path.home() / ".config/nvim",
+}
 
 # Print iterations progress
 # credit: https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
@@ -95,9 +108,32 @@ def upgrade_system(log_file, no_log):
         printProgressBar(upgrade_cmds.index(cmd) + 1, len(upgrade_cmds), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
     return failed_upgrades
 
-def link_dotfiles(log_file, no_log):
+def link_file(target, name, log_file, no_log, force, dry_run):
+    print(f"          Linking {target} to {name}         ")
+    if not dry_run:
+        if force:
+            output = run_cmd(["ln", "-sf", str(target), str(name)], log_file, no_log)
+        else:
+            output = run_cmd(["ln", "-s", str(target), str(name)], log_file, no_log)
+        if output.returncode != 0:
+            return (target, name)
+    else:
+        print(f"Would link {target} to {name}")
+        return None
+
+def link_dotfiles(log_file, no_log, force, dry_run):
     print("Linking dotfiles")
-    print("sry")
+    failed_links = []
+    if not dry_run:
+        printProgressBar(0, len(to_link), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    for target, name in to_link.items():
+        failed_link = link_file(target, name, log_file, no_log, force, dry_run)
+        if failed_link:
+            failed_links.append(failed_link)
+        if not dry_run:
+            printProgressBar(list(to_link.keys()).index(target) + 1, len(to_link), prefix = 'Progress:', suffix = 'Complete', length = 50, fill="=")
+    return failed_links
+    
 
 def install_packages(packages, log_file, no_log):
     failed_installations = []
@@ -192,12 +228,18 @@ if(__name__ == "__main__"):
     parser.add_argument("-e", "--editors", help="Install all editors that I currently use", action="store_true")
     parser.add_argument("-m", "--misc", help="Install misc packages", action="store_true")
     parser.add_argument("-A", "--additional", help="Execute the scripts in the additional_install_scripts folder", action="store_true")
-    parser.add_argument('-f', '--log-file', help="Specify the log file name. Default is \"log.txt\"", default=Path('log.txt'))
+    parser.add_argument('-F', '--log-file', help="Specify the log file name. Default is \"log.txt\"", default=Path('log.txt'))
     parser.add_argument("--no-log", help="Don't log output of executed commands", action="store_true", default=False)
     parser.add_argument("--no-color", help="Disable color output", action="store_true")
-    parser.add_argument('-y', '--yes', help="Answer yes to all questions", action="store_true")
+    parser.add_argument("-f", "--force", help="Force all checks to pass", action="store_true")
+    parser.add_argument("--dry", help="Don't link any files", action="store_true")
+
 
     args = parser.parse_args()
+
+    if args.list:
+        print("List")
+        exit(0)
 
     if args.all:
         args.ppas = True
@@ -221,11 +263,9 @@ if(__name__ == "__main__"):
 
     if not args.no_log:
         if args.log_file.exists():
-            if not args.yes:
-                print(f"Log file {args.log_file} already exists. Do you want to overwrite it? [y/N]")
-                if input().lower() != "y":
-                    print("Exiting")
-                    exit(0)
+            if not args.force:
+                print(f"{colors.FAIL}Log file \"{args.log_file}\" already exists. Use -f to force overwrite.{colors.ENDC}")
+                exit(1)
             os.remove(args.log_file)
 
     # initialize lists for failed installations
@@ -234,6 +274,8 @@ if(__name__ == "__main__"):
     failed_installations = []
     failed_bash_scripts = []
     failed_linking = []
+
+    run_cmd(["sudo", "echo", "-n", ""], args.log_file, True) # ask for sudo password
     
     # add PPAs
     if args.ppas:
@@ -262,15 +304,12 @@ if(__name__ == "__main__"):
 
     # link dotfiles
     if args.link:
-        failed_linking = link_dotfiles(args.log_file, args.no_log)
+        failed_linking = link_dotfiles(args.log_file, args.no_log, args.force, args.dry)
 
     if not args.no_log:
         log = open(args.log_file, "a")
 
-    print(f"\n{colors.OKGREEN}Done{colors.ENDC}")
-    if not args.no_log:
-        log.write("\nDone\n")
-
+    # print failed installations
     if len(failed_ppas) > 0:
         print(f"\n{colors.FAIL}Failed to add the following PPAs:{colors.ENDC}")
         for ppa in failed_ppas:
