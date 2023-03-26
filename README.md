@@ -37,6 +37,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
+Run `:so` in `nvim/lua/EldosHD/packer.lua`
+
 ## Install the tmux cpu mem program
 
 ```bash
