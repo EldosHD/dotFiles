@@ -71,7 +71,7 @@ ZSH_THEME="cute"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git tmux lol colored-man-pages sudo) 
+plugins=(git tmux lol colored-man-pages sudo zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete) 
 
 ZSH_TMUX_AUTOSTART=true
 
