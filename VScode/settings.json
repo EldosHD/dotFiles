@@ -389,5 +389,6 @@
     },
     "[python]": {
         "editor.formatOnType": true
-    }
+    },
+    "workbench.iconTheme": "vscode-icons"
 }
