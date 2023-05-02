@@ -390,6 +390,7 @@
     "[python]": {
         "editor.formatOnType": true
     },
+<<<<<<< HEAD
     "editor.wordWrap": "on",
     "latex-workshop.latex.tools": [
         {
@@ -407,4 +408,7 @@
             "env": {}
         }
     ]
+=======
+    "workbench.iconTheme": "vscode-icons"
+>>>>>>> 11289604caceb097777e60ec2add1980135e4a55
 }
