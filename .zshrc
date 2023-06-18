@@ -71,7 +71,7 @@ ZSH_THEME="cute"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git tmux lol colored-man-pages sudo zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete) 
+plugins=(git tmux lol colored-man-pages sudo zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
 
 ZSH_TMUX_AUTOSTART=true
 
@@ -147,6 +147,9 @@ export WIILOAD=tcp:192.168.1.103
 # JAVA
 export JAVA_HOME=/usr/lib/jvm/jdk-19
 export PATH=$PATH:$JAVA_HOME/bin
+
+# GO
+export PATH=$PATH:/usr/local/go/bin
 
 # This loads nvm
 export NVM_DIR="/home/valentin/.nvm"
