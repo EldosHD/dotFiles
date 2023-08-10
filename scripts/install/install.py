@@ -59,6 +59,7 @@ to_link = {
     Path(dotfile_dir / "VScode/settings.json"): Path.home() / ".config/Code/User/settings.json",
     Path(dotfile_dir / "VScode/snippets/"): Path.home() / ".config/Code/User/snippets",
     Path(dotfile_dir / "cute.zsh-theme"): Path.home() / ".oh-my-zsh/custom/themes/cute.zsh-theme",
+    Path(dotfile_dir / "basic.zsh-theme"): Path.home() / ".oh-my-zsh/custom/themes/basic.zsh-theme",
     Path(dotfile_dir / "Uni/sshConfig"): Path.home() / ".ssh/config",
     Path(dotfile_dir / "nvim/"): Path.home() / ".config/nvim",
 }
