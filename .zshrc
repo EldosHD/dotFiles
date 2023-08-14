@@ -151,6 +151,9 @@ export PATH=$PATH:$JAVA_HOME/bin
 # GO
 export PATH=$PATH:/usr/local/go/bin
 
+# RUST binaries
+export PATH=$PATH:/$HOME/.cargo/bin
+
 # This loads nvm
 export NVM_DIR="/home/valentin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  
