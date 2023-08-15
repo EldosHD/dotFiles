@@ -11,11 +11,11 @@ git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
 
 ### Prequesits
 
-You need a nerd font, rust and toml-bombadil installed.
+You need curl, a nerd font, rust and toml-bombadil installed.
 
-The nerd font you can get from your package manager:
+The curl (for later installing rust) and the nerd font you can get from your package manager:
 
-Arch: 
+**Arch**: 
 ```bash
 sudo pacman -S --noconfirm ttf-firacode-nerd curl
 ```
@@ -38,21 +38,21 @@ cargo install toml-bombadil
 
 First I'd like to install a couple programs I find useful:
 
-**Arch**. You'll need `yay` if your distro  doesn't ship with it:
+**Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin
+yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord
 ```
 
 ---
 
-Then install all rust additional rust binaries:
+Then install all additional rust binaries:
 ```bash
 cargo install exa du-dust bat starship zellij
 ```
 
 ---
 
-Lastly install the dotfiles:
+Lastly setup toml-bombadil and link the dotfiles:
 ```bash
 bombadil install ~/my_dotfiles
 bombadil link 
@@ -61,6 +61,8 @@ bombadil link
 ### Post Install
 
 You may need to execute the following commands to get everything working:
+
+---
 
 The **NVIM Plugin Manager**:
 ```bash
