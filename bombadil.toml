@@ -4,7 +4,7 @@ dotfiles_dir = "my_dotfiles"
 [settings]
 
 # An array of post install shell commands
-# posthooks = [ "sway reload" ]
+prehooks = [ "mkdir -p ~/.config/zellij" ]
 posthooks = [ "mkdir -p ~/GitHub/Uni"]
 
 [settings.dots]
@@ -17,3 +17,5 @@ bashrc = { source = "shell/.bashrc", target = ".bashrc" }
 vscode = { source = "vscode", target = ".config/Code/User" }
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }
 sshconfig = { source = "Uni/sshConfig", target = ".ssh/config" }
+starship = { source = "shell/starship.toml", target = ".config/starship.toml" }
+zellij = { source = "shell/zellij", target = ".config/zellij/config.kdl" }

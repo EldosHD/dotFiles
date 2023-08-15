@@ -1,3 +1,4 @@
+#!/bin/bash
 ### Update Path ###
 
 # Rust binaries
@@ -14,6 +15,10 @@ alias nrp="cargo init && cargo clippy --fix -- \
 -W clippy::expect_used"
 alias pfv="pip freeze | sed \"s/=.*//\""
 alias print-broken-symlinks="find -L . -type l"
+
+
+### Zellij ###
+eval "$(zellij setup --generate-auto-start bash)"
 
 
 ### Starship ###

@@ -47,7 +47,7 @@ yay -S --noconfirm visual-studio-code-bin
 
 Then install all rust additional rust binaries:
 ```bash
-cargo install exa du-dust bat
+cargo install exa du-dust bat starship zellij
 ```
 
 ---
