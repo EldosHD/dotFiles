@@ -5,4 +5,4 @@ log.*
 */venv
 
 # Bombadil dotfile manager
-/.dots/*
+.dots/
