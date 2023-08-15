@@ -36,7 +36,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ### Additional Binaries
 
 ```bash
-cargo install exa
+cargo install exa toml-bombadil du-dust
 ```
 
 ## NVIM
