@@ -1,0 +1,115 @@
+{
+    "workbench.colorTheme": "Pink Cat Boo",
+    "security.workspace.trust.banner": "always",
+    "security.workspace.trust.enabled": false,
+    "editor.tokenColorCustomizations": {
+        //"functions": "#E6C691",
+        //"keywords": "#EAC2E0",
+        //"comments": "#665562",
+        //"types": "#EAC2E0",
+        //"strings": "#ff86e0",
+        //"numbers": "#E6C691",
+        //"variables": "#E6C691",
+        //"textMateRules": [{
+        //    "scope": "keyword.operator",
+        //    "settings": {
+        //        "foreground": "#CC6CB4",
+        //    },"name": "jo"
+        //}]
+    },
+    "python.defaultInterpreterPath": "/home/valentin/GoogleDrive/Uni/Miniforschung/skripte/venv",
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        },
+        "zsh (2)": {
+            "path": "/usr/bin/zsh"
+        }
+    },
+    "workbench.colorCustomizations": {
+        "[Pink Cat Boo]": {
+            "statusBar.foreground": "#000000",
+            "gitlens.trailingLineForegroundColor": "#a3a3a3"
+        }
+    },
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": true,
+        "java": true
+    },
+    "java.configuration.runtimes": [
+
+    
+        {
+            "name": "JavaSE-17",
+            "path": "/usr/lib/jvm/jdk-17",
+            "default": true
+        },
+        {
+            "name": "JavaSE-19",
+            "path": "/usr/lib/jvm/open-jdk-19-adoptium"
+        }
+    ],
+    "[plaintext]": {
+        "diffEditor.wordWrap": "on",
+        "editor.wordWrap": "on"
+    },
+    "editor.lineNumbers": "relative",
+    "java.jdt.ls.java.home": "/usr/lib/jvm/jdk-19",
+
+    // devkitpro stuff
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "/opt/devkitpro/devkitPPC/include/**",
+        "/opt/devkitpro/devkitPPC/powerpc-eabi/include/**",
+        "/opt/devkitpro/libogc/include/**",
+        "/opt/devkitpro/wut/include/**",
+        "/opt/devkitpro/libctru/include/**",
+        "/opt/devkitpro/devkitARM/include/**",
+        "/opt/devkitpro/devkitARM/arm-none-eabi/include/**"
+    ],
+    "C_Cpp.default.defines": [
+        "ARM9"
+    ],
+    "C_Cpp.default.compilerPath": "/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc",
+    "C_Cpp.default.intelliSenseMode": "gcc-arm",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.wordWrap": "on",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-shell-escape",              // <---- added this line
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ]
+}

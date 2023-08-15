@@ -3,3 +3,6 @@ test.sh
 log.*
 
 */venv
+
+# Bombadil dotfile manager
+/.dots/*

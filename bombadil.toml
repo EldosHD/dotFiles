@@ -1,0 +1,19 @@
+# Path to your dotfiles relative to your $HOME directory
+dotfiles_dir = "my_dotfiles"
+
+[settings]
+
+# An array of post install shell commands
+# posthooks = [ "sway reload" ]
+posthooks = [ "mkdir -p ~/GitHub/Uni"]
+
+[settings.dots]
+
+# A dot entry representing a symlink, `source` is relative to `dotfiles_dir`
+# and `target` shall be relative to $HOME directory or absolute.
+
+nvim = { source = "nvim", target = ".config/nvim" }
+bashrc = { source = "shell/.bashrc", target = ".bashrc" }
+vscode = { source = "vscode", target = ".config/Code/User" }
+gitconfig = { source = ".gitconfig", target = ".gitconfig" }
+sshconfig = { source = "Uni/sshConfig", target = ".ssh/config" }
