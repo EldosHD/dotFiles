@@ -1,4 +1,3 @@
-#!/bin/bash
 ### Update Path ###
 
 # Rust binaries
@@ -18,8 +17,7 @@ alias print-broken-symlinks="find -L . -type l"
 
 
 ### Zellij ###
-eval "$(zellij setup --generate-auto-start bash)"
-
+eval "$(zellij setup --generate-auto-start zsh)"
 
 ### Starship ###
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
