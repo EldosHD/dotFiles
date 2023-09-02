@@ -17,7 +17,7 @@ The curl (for later installing rust) and the nerd font you can get from your pac
 
 **Arch**: 
 ```bash
-sudo pacman -S --noconfirm ttf-firacode-nerd curl
+sudo pacman -S --noconfirm ttf-firacode-nerd curl cmake
 ```
 
 ---
@@ -40,7 +40,7 @@ First I'd like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord zsh
+yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord zsh keepass
 ```
 
 ---
