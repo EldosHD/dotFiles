@@ -12,3 +12,13 @@ Host github-Uni
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_rsa_Uni
+
+Host mcs # minecraft server
+  HostName eldos.one
+  User root
+  IdentityFile ~/.ssh/mcs.ed25519
+
+Host homeserver # server under my desk
+  HostName 192.168.1.80
+  User valentin
+  IdentityFile ~/.ssh/homeserver.ed25519
