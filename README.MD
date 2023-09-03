@@ -54,7 +54,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 Then install all additional rust binaries:
 ```bash
-cargo install exa du-dust bat starship zellij cargo-info
+cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty
 ```
 
 ---
