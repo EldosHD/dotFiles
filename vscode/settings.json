@@ -65,8 +65,8 @@
             "default": true
         },
         {
-            "name": "JavaSE-19",
-            "path": "/usr/lib/jvm/open-jdk-19-adoptium"
+            "name": "JavaSE-20",
+            "path": "/usr/lib/jvm/jdk-20"
         }
     ],
     "[plaintext]": {
@@ -74,7 +74,7 @@
         "editor.wordWrap": "on"
     },
     "editor.lineNumbers": "relative",
-    "java.jdt.ls.java.home": "/usr/lib/jvm/jdk-19",
+    "java.jdt.ls.java.home": "/usr/lib/jvm/jdk-20",
 
     // devkitpro stuff
     "C_Cpp.default.includePath": [
