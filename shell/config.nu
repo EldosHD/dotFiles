@@ -11,5 +11,14 @@ $env.config = {
     show_banner: false
 }
 
+# alias
+alias l = exa -lag
+alias e = exa -lag
+alias ggs = grive -P -p ~/GoogleDrive
+
+# broken TODO: fix
+# alias pfv = pip freeze | sed "\"s/=.*//\""
+# alias print-broken-symlinks = find -L . -type l
+
 # Starship
 use ~/.cache/starship/init.nu
