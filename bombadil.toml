@@ -24,3 +24,9 @@ nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zsh = { source = "shell/.zshrc" ,  target = ".zshrc"}
 zellij = { source = "shell/zellij", target = ".config/zellij/config.kdl" }
 alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
+
+[profiles.laptop.dots]
+alacritty_font_size = { source = "shell/alacritty_laptop.yml" , target = ".alacritty_font_size.yml" }
+
+[profiles.desktop.dots]
+alacritty_font_size = { source = "shell/alacritty_desktop.yml" , target = ".alacritty_font_size.yml" }

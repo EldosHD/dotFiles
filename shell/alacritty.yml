@@ -8,8 +8,8 @@
 #
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
-#import:
-#  - /path/to/alacritty.yml
+import:
+ - ~/.alacritty_font_size.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -122,7 +122,7 @@ window:
   #multiplier: 3
 
 # Font configuration
-font:
+# font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -170,7 +170,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 6.0
+  # size: 6.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
