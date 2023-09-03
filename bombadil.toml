@@ -4,7 +4,7 @@ dotfiles_dir = "my_dotfiles"
 [settings]
 
 # An array of post install shell commands
-prehooks = [ "mkdir -p ~/.config/zellij", "rm ~/.zshrc" ]
+prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.zshrc", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets"]
 posthooks = [ "mkdir -p ~/GitHub/Uni"]
 
 [settings.dots]
@@ -16,6 +16,11 @@ nvim = { source = "nvim", target = ".config/nvim" }
 vscode = { source = "vscode", target = ".config/Code/User" }
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }
 sshconfig = { source = "Uni/sshConfig", target = ".ssh/config" }
+
+# shell
 starship = { source = "shell/starship.toml", target = ".config/starship.toml" }
-zellij = { source = "shell/zellij", target = ".config/zellij/config.kdl" }
+nuenv = { source = "shell/env.nu" , target = ".config/nushell/env.nu"}
+nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zsh = { source = "shell/.zshrc" ,  target = ".zshrc"}
+zellij = { source = "shell/zellij", target = ".config/zellij/config.kdl" }
+alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
