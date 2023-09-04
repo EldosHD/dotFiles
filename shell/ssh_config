@@ -3,8 +3,8 @@ Host github.com # Default GitHub
   User git
   IdentityFile ~/.ssh/id_ed25519
 
-Host github-Uni
-  HostName github.com # Uni GitHub
+Host github-Uni # Uni GitHub
+  HostName github.com
   User git
   IdentityFile ~/.ssh/id_rsa_Uni
 
