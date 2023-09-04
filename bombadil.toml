@@ -27,6 +27,5 @@ sshconfig = { source = "Uni/sshConfig", target = ".ssh/config" }
 starship = { source = "shell/starship.toml", target = ".config/starship.toml" }
 nuenv = { source = "shell/env.nu" , target = ".config/nushell/env.nu"}
 nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
-zsh = { source = "shell/.zshrc" ,  target = ".zshrc"}
 zellij = { source = "shell/zellij", target = ".config/zellij/config.kdl" }
 alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
