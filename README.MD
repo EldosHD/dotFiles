@@ -17,7 +17,7 @@ The curl (for later installing rust) and the nerd font you can get from your pac
 
 **Arch**: 
 ```bash
-sudo pacman -S --noconfirm ttf-firacode-nerd curl cmake
+sudo pacman -S --noconfirm curl cmake otf-droid-nerd
 ```
 
 ---
