@@ -11,3 +11,8 @@ disabled = true
 truncation_length = 15
 truncation_symbol = '…/'
 truncate_to_repo = false
+style = "blue bold"
+
+[username]
+show_always = true
+style_user = "cyan bold"
