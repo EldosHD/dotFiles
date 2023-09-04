@@ -7,6 +7,12 @@ dotfiles_dir = "my_dotfiles"
 prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.zshrc", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets"]
 posthooks = [ "mkdir -p ~/GitHub/Uni"]
 
+[profiles.laptop.dots]
+alacritty_font_size = { source = "shell/alacritty_laptop.yml" , target = ".alacritty_font_size.yml" }
+
+[profiles.desktop.dots]
+alacritty_font_size = { source = "shell/alacritty_desktop.yml" , target = ".alacritty_font_size.yml" }
+
 [settings.dots]
 
 # A dot entry representing a symlink, `source` is relative to `dotfiles_dir`
@@ -24,9 +30,3 @@ nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zsh = { source = "shell/.zshrc" ,  target = ".zshrc"}
 zellij = { source = "shell/zellij", target = ".config/zellij/config.kdl" }
 alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
-
-[profiles.laptop.dots]
-alacritty_font_size = { source = "shell/alacritty_laptop.yml" , target = ".alacritty_font_size.yml" }
-
-[profiles.desktop.dots]
-alacritty_font_size = { source = "shell/alacritty_desktop.yml" , target = ".alacritty_font_size.yml" }

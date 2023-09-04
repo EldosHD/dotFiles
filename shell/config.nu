@@ -1,5 +1,3 @@
-$env.PATH = ($env.PATH | append "$env.HOME/.cargo/bin")
-
 $env.EDITOR = "/usr/bin/nvim"
 
 $env.config = {
