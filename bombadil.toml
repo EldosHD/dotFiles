@@ -21,7 +21,7 @@ alacritty_font_size = { source = "shell/alacritty_desktop.yml" , target = ".alac
 nvim = { source = "nvim", target = ".config/nvim" }
 vscode = { source = "vscode", target = ".config/Code/User" }
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }
-sshconfig = { source = "Uni/sshConfig", target = ".ssh/config" }
+sshconfig = { source = "shell/ssh_config", target = ".ssh/config" }
 
 # shell
 starship = { source = "shell/starship.toml", target = ".config/starship.toml" }

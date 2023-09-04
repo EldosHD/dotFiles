@@ -1,24 +1,19 @@
-# move this into the .ssh folder
-# use this command:
-# ln -s ~/.dotFiles/Uni/sshConfig ~/.ssh/config
-
-# Default GitHub
-Host github.com
+Host github.com # Default GitHub
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_ed25519
 
 Host github-Uni
-  HostName github.com
+  HostName github.com # Uni GitHub
   User git
   IdentityFile ~/.ssh/id_rsa_Uni
 
-Host mcs # minecraft server
+Host vps # Minecraft Server
   HostName eldos.one
   User root
   IdentityFile ~/.ssh/mcs.ed25519
 
-Host homeserver # server under my desk
+Host homeserver # Server under my desk
   HostName 192.168.1.80
   User valentin
   IdentityFile ~/.ssh/homeserver.ed25519
