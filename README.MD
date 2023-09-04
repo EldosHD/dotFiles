@@ -40,19 +40,12 @@ First I'd like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord zsh keepass
+yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord keepass
 ```
 
 ---
 
-Next install **oh-my-zsh** as the Zsh plugin manager:
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
----
-
-Then install all additional rust binaries:
+Next install all additional rust binaries:
 ```bash
 cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty
 ```
@@ -98,11 +91,4 @@ git clone https://github.com/TheDarkBug/uwufetch.git
 cd uwufetch
 make build # add "CFLAGS+=-D__IPHONE__" if you are building for iOS
 sudo make install
-```
-
----
-
-The **Zsh Plugin Manager** oh-my-zsh:
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
