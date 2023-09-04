@@ -67,7 +67,7 @@ Then just set up a keyboard shortcut in your WM settings for launching `/absolut
 Lastly setup toml-bombadil and link the dotfiles:
 ```bash
 bombadil install ~/my_dotfiles
-bombadil link 
+bombadil link # add "-p laptop" if you want a larger font size for a smaller screen
 ```
 
 ### Post Install
