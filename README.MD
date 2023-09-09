@@ -13,7 +13,7 @@ git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
 
 You need curl, a nerd font, rust and toml-bombadil installed.
 
-The curl (for later installing rust) and the nerd font you can get from your package manager:
+Curl (for later installing rust), cmake (some of the rust binaries need cmake) and the nerd font you can get from your package manager:
 
 **Arch**: 
 ```bash
@@ -47,7 +47,7 @@ yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord keep
 
 Next install all additional rust binaries:
 ```bash
-cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta
+cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep
 ```
 
 ---
