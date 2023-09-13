@@ -11,7 +11,7 @@ git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
 
 ### Prerequesits
 
-You need curl, a nerd font, rust and toml-bombadil installed.
+You need curl, cmake, a nerd font, rust and toml-bombadil installed.
 
 Curl (for later installing rust), cmake (some of the rust binaries need cmake) and the nerd font you can get from your package manager:
 
