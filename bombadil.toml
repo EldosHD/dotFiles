@@ -4,7 +4,7 @@ dotfiles_dir = "my_dotfiles"
 [settings]
 
 # An array of post install shell commands
-prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.zshrc", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets"]
+prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets"]
 posthooks = [ "mkdir -p ~/GitHub/Uni"]
 
 [profiles.laptop.dots]
@@ -18,7 +18,6 @@ alacritty_font_size = { source = "shell/alacritty_desktop.yml" , target = ".alac
 # A dot entry representing a symlink, `source` is relative to `dotfiles_dir`
 # and `target` shall be relative to $HOME directory or absolute.
 
-nvim = { source = "nvim", target = ".config/nvim" }
 vscode = { source = "vscode", target = ".config/Code/User" }
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }
 sshconfig = { source = "shell/ssh_config", target = ".ssh/config" }

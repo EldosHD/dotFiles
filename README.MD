@@ -69,16 +69,3 @@ Lastly setup toml-bombadil and link the dotfiles:
 bombadil install ~/my_dotfiles
 bombadil link # add "-p laptop" if you want a larger font size for a smaller screen
 ```
-
-### Post Install
-
-You may need to execute the following commands to get everything working:
-
----
-
-The **NVIM Plugin Manager**:
-```bash
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-Run `:so` in `nvim/lua/EldosHD/packer.lua` afterwords.
