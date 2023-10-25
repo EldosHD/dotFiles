@@ -1,3 +1,5 @@
+Include other_ssh_config # include another ssh config if it exists
+
 Host github.com # Default GitHub
   HostName github.com
   User git
