@@ -11,9 +11,9 @@ git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
 
 ### Prerequesits
 
-You need curl, cmake, a nerd font, rust and toml-bombadil installed.
+You need **curl**, **cmake**, **a nerd font**, **rust** and **toml-bombadil** installed.
 
-Curl (for later installing rust), cmake (some of the rust binaries need cmake) and the nerd font you can get from your package manager:
+**Curl** (for later installing rust), **cmake** (some of the rust binaries need cmake) and the **nerd font** (otf-droid-nerd in this case) you can install via your package manager:
 
 **Arch**: 
 ```bash
@@ -22,13 +22,13 @@ sudo pacman -S --noconfirm curl cmake otf-droid-nerd
 
 ---
 
-Rust you can get from [rustup](https://rustup.rs/):
+**Rust** you can get from [rustup](https://rustup.rs/):
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-And toml-bombadil you can get from cargo:
+And **toml-bombadil** can be installed with cargo:
 
 ```bash
 cargo install toml-bombadil
