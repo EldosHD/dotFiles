@@ -69,3 +69,12 @@ Lastly setup toml-bombadil and link the dotfiles:
 bombadil install ~/my_dotfiles
 bombadil link # add "-p laptop" if you want a larger font size for a smaller screen
 ```
+
+### Post Installation Setup
+
+Install **Astronvim**:
+
+```bash
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+nvim
+```
