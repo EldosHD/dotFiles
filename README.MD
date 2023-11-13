@@ -40,7 +40,7 @@ First I'd like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin google-chrome thunderbird discord keepass
+yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass
 ```
 
 ---
