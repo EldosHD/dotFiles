@@ -13,6 +13,7 @@ $env.config = {
 alias l = exa -lag
 alias e = exa -lag
 alias ggs = grive -P -p ~/GoogleDrive
+alias ca = cargo mommy
 
 # broken TODO: fix
 # alias pfv = pip freeze | sed "\"s/=.*//\""

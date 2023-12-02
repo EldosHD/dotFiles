@@ -47,7 +47,7 @@ yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass
 
 Next install all additional rust binaries:
 ```bash
-cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved
+cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved cargo-mommy
 ```
 
 ---

@@ -8,6 +8,9 @@ $env.DEVKITPRO = '/opt/devkitpro'
 $env.DEVKITARM = '/opt/devkitpro/devkitARM'
 $env.DEVKITPPC = '/opt/devkitpro/devkitPPC'
 
+# Cargo mommy
+$env.CARGO_MOMMYS_MOODS = 'chill/ominous/thirsty'
+$env.CARGO_MOMMYS_LITTLE = 'boy/girl'
 
 # Starship
 mkdir ~/.cache/starship
