@@ -17,7 +17,7 @@ You need **curl**, **cmake**, **a nerd font**, **rust** and **toml-bombadil** in
 
 **Arch**: 
 ```bash
-sudo pacman -S --noconfirm curl cmake otf-droid-nerd
+sudo pacman -S --noconfirm curl cmake ttf-firacode-nerd
 ```
 
 ---
@@ -67,7 +67,7 @@ Then just set up a keyboard shortcut in your WM settings for launching `/absolut
 Lastly setup toml-bombadil and link the dotfiles:
 ```bash
 bombadil install ~/my_dotfiles
-bombadil link # add "-p laptop" if you want a larger font size for a smaller screen
+bombadil link 
 ```
 
 ### Post Installation Setup
