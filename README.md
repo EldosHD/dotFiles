@@ -45,6 +45,14 @@ yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass
 
 ---
 
+You also have to clone the git repo with the alacritty colorschemes.
+```bash
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+```
+
+---
+
 Next install all additional rust binaries:
 ```bash
 cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved cargo-mommy
