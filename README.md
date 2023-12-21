@@ -40,7 +40,7 @@ First I'd like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass
+yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass catppuccin-gtk-theme-mocha
 ```
 
 ---
@@ -85,4 +85,11 @@ Install **Astronvim**:
 ```bash
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 nvim
+```
+
+---
+
+Set the **GTK-Theme** to Catppuccin-Mocha:
+```bash
+gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Mocha-Standard-Pink-Dark
 ```
