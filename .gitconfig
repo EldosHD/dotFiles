@@ -3,14 +3,14 @@
 	email = Eldos.sonofelax@gmail.com
 # include uni email
 [includeIf "gitdir:~/GitHub/Uni/"] # !!! GitHub has an capital "H" !!!
-    path = ~/.my_dotfiles/Uni/.gitconfig
+  path = ~/.my_dotfiles/Uni/.gitconfig
 
 [core]
 	editor = code
 	# this has to be different on windows. "input" is for linux and mac
 	autocrlf = input
 	# use git-delta as a pager
-    pager = delta
+  pager = delta
 [init]
 	defaultBranch = main
 
@@ -18,12 +18,11 @@
 [pull]
 	rebase = false
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    navigate = true
+  navigate = true
+  features = Catppuccin-mocha
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 [diff]
-    colorMoved = default
-
-
+  colorMoved = default

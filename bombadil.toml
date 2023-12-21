@@ -5,10 +5,11 @@ dotfiles_dir = "my_dotfiles"
 
 # An array of post install shell commands
 prehooks = [
-  "mkdir -p ~/.config/zellij ~/.config/nushell",
   "rm ~/.config/Code/User/settings.json",
   "rm -rf ~/.config/Code/User/snippets",
-  "mkdir -p ~/.config/nvim/lua/user"
+  "mkdir -p ~/.config/zellij ~/.config/nushell",
+  "mkdir -p ~/.config/nvim/lua/user",
+  "mkdir -p ~/.config/bat/themes"
 ]
 
 posthooks = [
@@ -34,6 +35,7 @@ nuenv = { source = "shell/env.nu" , target = ".config/nushell/env.nu"}
 nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zellij = { source = "shell/zellij.kdl", target = ".config/zellij/config.kdl" }
 alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
+bat_config = { source = "shell/bat_config" , target = ".config/bat/config"}
 
 # wallpaper
 mocha-cat = { source = "wallpapers/mocha-cat.png", target = "/usr/share/endeavouros/backgrounds/mocha-cat" }
