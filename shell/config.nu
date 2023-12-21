@@ -10,8 +10,8 @@ $env.config = {
 }
 
 # alias
-alias l = exa -lag
-alias e = exa -lag
+alias l = exa -lag --git
+alias e = exa -lag --git
 alias ggs = grive -P -p ~/GoogleDrive
 alias ca = cargo mommy
 
