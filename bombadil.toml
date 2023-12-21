@@ -5,7 +5,7 @@ dotfiles_dir = "my_dotfiles"
 
 # An array of post install shell commands
 prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets", "mkdir -p ~/.config/nvim/lua/user"]
-posthooks = [ "mkdir -p ~/GitHub/Uni"]
+posthooks = [ "mkdir -p ~/GitHub/Uni", "eos-wallpaper-set ~/my_dotfiles/wallpapers/mocha-cat.png"]
 
 [settings.dots]
 # A dot entry representing a symlink, `source` is relative to `dotfiles_dir`
@@ -25,3 +25,6 @@ nuenv = { source = "shell/env.nu" , target = ".config/nushell/env.nu"}
 nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zellij = { source = "shell/zellij.kdl", target = ".config/zellij/config.kdl" }
 alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
+
+# wallpaper
+mocha-cat = { source = "wallpapers/mocha-cat.png", target = "/usr/share/endeavouros/backgrounds/mocha-cat" }
