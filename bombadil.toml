@@ -4,8 +4,17 @@ dotfiles_dir = "my_dotfiles"
 [settings]
 
 # An array of post install shell commands
-prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets", "mkdir -p ~/.config/nvim/lua/user"]
-posthooks = [ "mkdir -p ~/GitHub/Uni", "eos-wallpaper-set ~/my_dotfiles/wallpapers/mocha-cat.png"]
+prehooks = [
+  "mkdir -p ~/.config/zellij ~/.config/nushell",
+  "rm ~/.config/Code/User/settings.json",
+  "rm -rf ~/.config/Code/User/snippets",
+  "mkdir -p ~/.config/nvim/lua/user"
+]
+
+posthooks = [
+  "mkdir -p ~/GitHub/Uni",
+  "eos-wallpaper-set ~/my_dotfiles/wallpapers/mocha-cat.png"
+]
 
 [settings.dots]
 # A dot entry representing a symlink, `source` is relative to `dotfiles_dir`
