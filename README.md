@@ -93,3 +93,10 @@ Set the **GTK-Theme** to Catppuccin-Mocha:
 ```bash
 gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Mocha-Standard-Pink-Dark
 ```
+
+---
+
+Install the catppuccin themes for bat and delta:
+```bash
+~/my_dotfiles/scripts/install_bat_themes.sh
+```
