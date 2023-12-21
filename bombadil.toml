@@ -4,14 +4,18 @@ dotfiles_dir = "my_dotfiles"
 [settings]
 
 # An array of post install shell commands
-prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets"]
+prehooks = [ "mkdir -p ~/.config/zellij ~/.config/nushell", "rm ~/.config/Code/User/settings.json", "rm -rf ~/.config/Code/User/snippets", "mkdir -p ~/.config/nvim/lua/user"]
 posthooks = [ "mkdir -p ~/GitHub/Uni"]
 
 [settings.dots]
 # A dot entry representing a symlink, `source` is relative to `dotfiles_dir`
 # and `target` shall be relative to $HOME directory or absolute.
 
+# editors
 vscode = { source = "vscode", target = ".config/Code/User" }
+nvim = { source = "astronvim/init.lua",  target = ".config/nvim/lua/user/init.lua" }
+
+# config files
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }
 sshconfig = { source = "shell/ssh_config", target = ".ssh/config" }
 
