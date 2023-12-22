@@ -40,7 +40,7 @@ First I'd like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass catppuccin-gtk-theme-mocha
+yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass catppuccin-gtk-theme-mocha catppuccin-cursors-mocha
 ```
 
 ---
@@ -89,9 +89,10 @@ nvim
 
 ---
 
-Set the **GTK-Theme** to Catppuccin-Mocha:
+Set the **GTK-Theme** and the **Mouse Cursor** to Catppuccin-Mocha:
 ```bash
 gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Mocha-Standard-Pink-Dark
+xfconf-query --channel xsettings --property /Gtk/CursorThemeName --set Catppuccin-Mocha-Pink-Cursors
 ```
 
 ---
