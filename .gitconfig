@@ -3,7 +3,7 @@
 	email = Eldos.sonofelax@gmail.com
 # include uni email
 [includeIf "gitdir:~/GitHub/Uni/"] # !!! GitHub has an capital "H" !!!
-  path = ~/.my_dotfiles/Uni/.gitconfig
+  path = ~/my_dotfiles/Uni/.gitconfig
 
 [core]
 	editor = code
