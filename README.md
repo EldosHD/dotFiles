@@ -101,3 +101,11 @@ Install the catppuccin themes for bat and delta:
 ```bash
 ~/my_dotfiles/scripts/install_bat_themes.sh
 ```
+
+---
+
+Things you might want to do manually:
+- Install the [catppuccin grub theme](https://github.com/catppuccin/grub)
+- Install the [catppuccin tty theme](https://github.com/catppuccin/tty)
+- Install the [catppuccin thunderbird theme](https://github.com/catppuccin/thunderbird)
+- Import all the [catppuccin userstyles](https://github.com/catppuccin/userstyles)
