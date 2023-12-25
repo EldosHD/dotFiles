@@ -13,11 +13,11 @@ git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
 
 You need **curl**, **cmake**, **a nerd font**, **rust** and **toml-bombadil** installed.
 
-**Curl** (for later installing rust), **cmake** (some of the rust binaries need cmake) and the **nerd font** (otf-droid-nerd in this case) you can install via your package manager:
+**Curl** (for later installing rust), **cmake** (some of the rust binaries need cmake) and the **nerd font** (ttf-firacode-nerd in this case), alongside an **emoji font** (noto-fonts-emoji) you can install via your package manager:
 
 **Arch**: 
 ```bash
-sudo pacman -S --noconfirm curl cmake ttf-firacode-nerd
+sudo pacman -S --noconfirm curl cmake ttf-firacode-nerd noto-fonts-emoji
 ```
 
 ---
