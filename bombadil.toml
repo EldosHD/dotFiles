@@ -25,6 +25,7 @@ posthooks = [
 vscode = { source = "vscode", target = ".config/Code/User" }
 nvim_init = { source = "astronvim/init.lua",  target = ".config/nvim/lua/user/init.lua" }
 nvim_options = { source = "astronvim/options.lua",  target = ".config/nvim/lua/user/options.lua"}
+nvim_mappings = { source = "astronvim/mappings.lua",  target = ".config/nvim/lua/user/mappings.lua"}
 
 # config files
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }
