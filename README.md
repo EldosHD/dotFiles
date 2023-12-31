@@ -28,10 +28,10 @@ sudo pacman -S --noconfirm curl cmake ttf-firacode-nerd noto-fonts-emoji
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-And **toml-bombadil** can be installed with cargo:
+And **toml-bombadil** can be installed with cargo. I'll also install **cargo-binstall** to speed up later installations:
 
 ```bash
-cargo install toml-bombadil
+cargo install toml-bombadil cargo-binstall
 ```
 
 ### Installing the dotfiles and dependencies
@@ -55,7 +55,7 @@ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/theme
 
 Next install all additional rust binaries:
 ```bash
-cargo install exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved cargo-mommy
+cargo binstall exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved cargo-mommy
 ```
 
 ---
