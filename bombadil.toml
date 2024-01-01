@@ -36,5 +36,6 @@ starship = { source = "shell/starship.toml", target = ".config/starship.toml" }
 nuenv = { source = "shell/env.nu" , target = ".config/nushell/env.nu"}
 nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zellij = { source = "shell/zellij.kdl", target = ".config/zellij/config.kdl" }
-alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
+# alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
+alacritty = { source = "shell/alacritty.toml" , target = ".alacritty.toml" }
 bat_config = { source = "shell/bat_config" , target = ".config/bat/config"}
