@@ -14,6 +14,8 @@ alias l = exa -lag --git
 alias e = exa -lag --git
 alias ggs = grive -P -p ~/GoogleDrive
 alias ca = cargo mommy
+alias cacu = ca install-update -l
+alias ucap = ca install-update -a
 
 # broken TODO: fix
 # alias pfv = pip freeze | sed "\"s/=.*//\""
