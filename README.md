@@ -1,6 +1,6 @@
 # My Dotfiles
 
-This repository contains my dotfiles for my linux setup. I use [toml-bombadil](https://github.com/oknozor/toml-bombadil) to manage my dotfiles.
+This repository contains my dotfiles for my Linux setup. I use [toml-bombadil](https://github.com/oknozor/toml-bombadil) to manage my dotfiles.
 
 ## Installation
 
@@ -9,7 +9,7 @@ First you need to clone this repository:
 git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
 ```
 
-### Prerequesits
+### Prerequisites
 
 You need **curl**, **cmake**, **a nerd font**, **rust** and **toml-bombadil** installed.
 
@@ -107,5 +107,5 @@ Install the catppuccin themes for bat and delta:
 Things you might want to do manually:
 - Install the [catppuccin grub theme](https://github.com/catppuccin/grub)
 - Install the [catppuccin tty theme](https://github.com/catppuccin/tty)
-- Install the [catppuccin thunderbird theme](https://github.com/catppuccin/thunderbird)
+- Install the [catppuccin Thunderbird theme](https://github.com/catppuccin/thunderbird)
 - Import all the [catppuccin userstyles](https://github.com/catppuccin/userstyles)
