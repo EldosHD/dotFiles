@@ -6,7 +6,7 @@
   path = ~/my_dotfiles/Uni/.gitconfig
 
 [core]
-	editor = code
+	editor = nvim
 	# this has to be different on windows. "input" is for linux and mac
 	autocrlf = input
 	# use git-delta as a pager

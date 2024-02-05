@@ -16,6 +16,8 @@ alias ggs = grive -P -p ~/GoogleDrive
 alias ca = cargo mommy
 alias cacu = ca install-update -l
 alias ucap = ca install-update -a
+alias vim = nvim
+alias v = nvim .
 
 # broken TODO: fix
 # alias pfv = pip freeze | sed "\"s/=.*//\""
