@@ -97,9 +97,16 @@ xfconf-query --channel xsettings --property /Gtk/CursorThemeName --set Catppucci
 
 ---
 
-Install the catppuccin themes for bat and delta:
+Install the **catppuccin** themes for **bat** and **delta**:
 ```bash
 ~/my_dotfiles/scripts/install_bat_themes.sh
+```
+
+---
+
+Clone the **nu_scripts** repo for autocompletions:
+```bash
+git clone git@github.com:nushell/nu_scripts.git
 ```
 
 ---
