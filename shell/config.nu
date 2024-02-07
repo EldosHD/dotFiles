@@ -23,5 +23,14 @@ alias v = nvim .
 # alias pfv = pip freeze | sed "\"s/=.*//\""
 # alias print-broken-symlinks = find -L . -type l
 
+# completions
+use ~/nu_scripts/custom-completions/cargo/cargo-completions.nu *
+use ~/nu_scripts/custom-completions/git/git-completions.nu *
+use ~/nu_scripts/custom-completions/glow/glow-completions.nu *
+use ~/nu_scripts/custom-completions/make/make-completions.nu *
+use ~/nu_scripts/custom-completions/rustup/rustup-completions.nu *
+use ~/nu_scripts/custom-completions/typst/typst-completions.nu *
+use ~/nu_scripts/custom-completions/zellij/zellij-completions.nu *
+
 # Starship
 use ~/.cache/starship/init.nu
