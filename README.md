@@ -106,7 +106,7 @@ Install the **catppuccin** themes for **bat** and **delta**:
 
 Clone the **nu_scripts** repo for autocompletions:
 ```bash
-git clone git@github.com:nushell/nu_scripts.git
+git clone git@github.com:nushell/nu_scripts.git ~/nu_scripts
 ```
 
 ---
