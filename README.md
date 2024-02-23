@@ -40,7 +40,7 @@ First I'd like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass catppuccin-gtk-theme-mocha catppuccin-cursors-mocha neovim
+yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepass catppuccin-gtk-theme-mocha catppuccin-cursors-mocha neovim go
 ```
 
 ---
@@ -107,6 +107,13 @@ Install the **catppuccin** themes for **bat** and **delta**:
 Clone the **nu_scripts** repo for autocompletions:
 ```bash
 git clone git@github.com:nushell/nu_scripts.git
+```
+
+---
+
+Install all go programs I like:
+```bash
+go install github.com/guyfedwards/nom/cmd/nom@latest
 ```
 
 ---
