@@ -7,6 +7,26 @@ $env.config = {
     }
 
     show_banner: false
+    keybindings: [
+        {
+            name: clear 
+            modifier: control
+            keycode: char_j 
+            mode: emacs
+            event: [
+                { send: ClearScreen }
+            ]
+        },
+        {
+            name: clear 
+            modifier: control
+            keycode: char_l
+            mode: emacs
+            event: [
+                { send: HistoryHintComplete}
+            ]
+        }
+    ]
 }
 
 # alias
