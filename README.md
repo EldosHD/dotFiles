@@ -4,11 +4,6 @@ This repository contains my dotfiles for my Linux setup. I use [toml-bombadil](h
 
 ## Installation
 
-First you need to clone this repository:
-```bash
-git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
-```
-
 ### Prerequisites
 
 You need **curl**, **cmake**, **a nerd font**, **rust** and **toml-bombadil** installed.
@@ -36,7 +31,13 @@ cargo install toml-bombadil cargo-binstall
 
 ### Installing the dotfiles and dependencies
 
-First I'd like to install a couple programs I find useful:
+First you need to clone this repository:
+```bash
+git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
+```
+
+
+Then I like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
