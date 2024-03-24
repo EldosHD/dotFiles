@@ -15,6 +15,11 @@ Host vps # Minecraft Server
   User root
   IdentityFile ~/.ssh/mcs.ed25519
 
+Host nextcloud # nextcloud vps
+  HostName nx.eldos.one
+  User root
+  IdentityFile ~/.ssh/id_nextcloud
+
 Host homeserver # Server under my desk
   HostName 192.168.1.80
   User valentin
