@@ -21,7 +21,8 @@
   diffFilter = delta --color-only
 [delta]
   navigate = true
-  features = Catppuccin-mocha
+  features = Catppuccin Mocha
+  dark = true
 [merge]
   conflictstyle = diff3
 [diff]
