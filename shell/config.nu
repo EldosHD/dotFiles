@@ -38,6 +38,7 @@ alias cacu = ca install-update -l
 alias ucap = ca install-update -a
 alias vim = nvim
 alias v = nvim .
+alias cbat = bat --decorations never
 
 # broken TODO: fix
 # alias pfv = pip freeze | sed "\"s/=.*//\""
