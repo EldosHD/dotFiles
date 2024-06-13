@@ -6,5 +6,9 @@ return {
     ["<leader>h"] = { "di<", desc = "delete inner <>" },
     ["<leader>\""] = { "di\"", desc = "delete inner double quotes" },
     ["<leader>'"] = { "di'", desc = "delete inner single quotes" },
+
+    -- buffers
+    ["<leader>bn"] = { "<cmd>bn<cr>", desc = "Next buffer" },
+    ["<leader>bN"] = { "<cmd>bp<cr>", desc = "Previous buffer" },
   }
 }
