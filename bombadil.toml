@@ -14,7 +14,7 @@ prehooks = [
 
 posthooks = [
   "mkdir -p ~/GitHub/Uni",
-  "eos-wallpaper-set ~/my_dotfiles/wallpapers/mocha-cat.png"
+  "eos-wallpaper-set ~/my_dotfiles/wallpapers/windows-error.jpg"
 ]
 
 [settings.dots]
