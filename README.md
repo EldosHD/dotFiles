@@ -8,25 +8,29 @@ This repository contains my dotfiles for my Linux setup. I use [toml-bombadil](h
 
 You need **curl**, **cmake**, **a nerd font**, **rust** and **toml-bombadil** installed.
 
-**Curl** (for later installing rust), **cmake** (some of the rust binaries need cmake) and the **nerd font** (ttf-firacode-nerd in this case), alongside an **emoji font** (noto-fonts-emoji) you can install via your package manager:
+**Curl** (it was used for installing rust, but now I just use the rust package. Curl is still used a lot so I kept it in here), **cmake** (some of the rust binaries need cmake) and the **nerd font** (ttf-firacode-nerd in this case), alongside an **emoji font** (noto-fonts-emoji) you can install via your package manager:
 
 **Arch**: 
 ```bash
-sudo pacman -S --noconfirm curl cmake ttf-firacode-nerd noto-fonts-emoji
+sudo pacman -S --noconfirm curl cmake ttf-firacode-nerd noto-fonts-emoji toml-bombadil rust
 ```
 
 ---
 
-**Rust** you can get from [rustup](https://rustup.rs/):
+<details>
+  <summary>Alternative: Rust via rustup</summary>
+
+    Alternativly, you can get **Rust** from [rustup](https://rustup.rs/):
+    
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+</details>
+
+I'll also install **cargo-binstall** to speed up later installations:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-And **toml-bombadil** can be installed with cargo. I'll also install **cargo-binstall** to speed up later installations:
-
-```bash
-cargo install toml-bombadil cargo-binstall
+cargo install cargo-binstall
 ```
 
 ### Installing the dotfiles and dependencies
@@ -41,7 +45,7 @@ Then I like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm visual-studio-code-bin firefox thunderbird discord keepassxc catppuccin-gtk-theme-mocha catppuccin-cursors-mocha neovim go nextcloud-client
+yay -S --noconfirm firefox thunderbird discord keepassxc catppuccin-cursors-mocha neovim nextcloud-client
 ```
 
 ---
@@ -108,13 +112,6 @@ Install the **catppuccin** themes for **bat** and **delta**:
 Clone the **nu_scripts** repo for autocompletions:
 ```bash
 git clone git@github.com:nushell/nu_scripts.git ~/nu_scripts
-```
-
----
-
-Install all go programs I like:
-```bash
-go install github.com/guyfedwards/nom/cmd/nom@latest
 ```
 
 ---
