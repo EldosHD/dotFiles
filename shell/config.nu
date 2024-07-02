@@ -30,19 +30,14 @@ $env.config = {
 }
 
 # alias
-alias l = exa -lag --git
-alias e = exa -lag --git
-alias ggs = grive -P -p ~/GoogleDrive
+alias l = eza -lag --git
+alias e = eza -lag --git
 alias ca = cargo mommy
 alias cacu = ca install-update -l
 alias ucap = ca install-update -a
 alias vim = nvim
 alias v = nvim .
 alias cbat = bat --decorations never
-
-# broken TODO: fix
-# alias pfv = pip freeze | sed "\"s/=.*//\""
-# alias print-broken-symlinks = find -L . -type l
 
 # completions
 use ~/nu_scripts/custom-completions/cargo/cargo-completions.nu *

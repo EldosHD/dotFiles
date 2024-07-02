@@ -60,7 +60,7 @@ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/theme
 
 Next install all additional rust binaries:
 ```bash
-cargo binstall exa du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved cargo-mommy
+cargo binstall eza du-dust bat starship zellij cargo-info cargo-update nu alacritty git-delta ripgrep rm-improved cargo-mommy
 ```
 
 ---
