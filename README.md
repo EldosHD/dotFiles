@@ -50,10 +50,9 @@ yay -S --noconfirm firefox thunderbird discord keepassxc catppuccin-cursors-moch
 
 ---
 
-You also have to clone the git repo with the alacritty colorschemes.
+You also have get the alacritty colorthemes
 ```bash
-mkdir -p ~/.config/alacritty/themes
-git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 ```
 
 ---
