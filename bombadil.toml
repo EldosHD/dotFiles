@@ -7,9 +7,10 @@ dotfiles_dir = "my_dotfiles"
 prehooks = [
   "rm ~/.config/Code/User/settings.json",
   "rm -rf ~/.config/Code/User/snippets",
+  "rm -f ~/.config/ulauncher/*.json",
   "mkdir -p ~/.config/zellij ~/.config/nushell",
   "mkdir -p ~/.config/nvim/lua/user",
-  "mkdir -p ~/.config/bat/themes"
+  "mkdir -p ~/.config/bat/themes",
 ]
 
 posthooks = [
@@ -39,3 +40,8 @@ zellij = { source = "shell/zellij.kdl", target = ".config/zellij/config.kdl" }
 # alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
 alacritty = { source = "shell/alacritty.toml" , target = ".alacritty.toml" }
 bat_config = { source = "shell/bat_config" , target = ".config/bat/config"}
+
+# ulaucher
+ulauncher_extensions = { source = "ulauncher/extensions.json", target = ".config/ulauncher/extensions.json" }
+ulauncher_settings = { source = "ulauncher/settings.json", target = ".config/ulauncher/settings.json" }
+ulauncher_shortcuts = { source = "ulauncher/shortcuts.json", target = ".config/ulauncher/shortcuts.json" }

@@ -1,0 +1,22 @@
+{
+    "b352d084-0d6c-44c9-8d55-559375864c15": {
+        "id": "b352d084-0d6c-44c9-8d55-559375864c15",
+        "name": "Wikipedia",
+        "keyword": "wiki",
+        "cmd": "https://de.wikipedia.org/wiki/%s",
+        "icon": "/usr/share/ulauncher/media/wikipedia-icon.png",
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1721251273.3982587
+    },
+    "0ef122d3-2a37-41f9-888e-72a073435c07": {
+        "id": "0ef122d3-2a37-41f9-888e-72a073435c07",
+        "name": "DuckDuckGo",
+        "keyword": "dd",
+        "cmd": "https://duckduckgo.com/?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1721251343.4949741
+    }
+}

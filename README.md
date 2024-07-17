@@ -45,14 +45,14 @@ Then I like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm firefox thunderbird discord keepassxc catppuccin-cursors-mocha neovim nextcloud-client
+yay -S --noconfirm firefox thunderbird discord keepassxc catppuccin-cursors-mocha neovim nextcloud-client ulauncher
 ```
 
 ---
 
-You also have get the alacritty colorthemes
+Remember to also start the ulauncher deamon:
 ```bash
-curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+systemctl --user enable --now ulauncher
 ```
 
 ---
@@ -73,6 +73,21 @@ sudo ln -s ~/.cargo/bin/zellij /usr/local/bin
 ```
 
 Then just set up a keyboard shortcut in your WM settings for launching `/absolute/path/to/alacritty -e "%s"` or just set it as the default terminal emulator.
+
+---
+
+Before finishing up, install the **catppuccin** themes for **bat**, **delta** and **ulauncher**:
+```bash
+~/my_dotfiles/scripts/install_bat_themes.sh
+~/my_dotfiles/scripts/install_ulauncher_theme.sh
+```
+
+---
+
+You also have get the **alacritty** colorthemes:
+```bash
+curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+```
 
 ---
 
@@ -97,13 +112,6 @@ Set the **GTK-Theme** and the **Mouse Cursor** to Catppuccin-Mocha:
 ```bash
 gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Mocha-Standard-Pink-Dark
 xfconf-query --channel xsettings --property /Gtk/CursorThemeName --set Catppuccin-Mocha-Pink-Cursors
-```
-
----
-
-Install the **catppuccin** themes for **bat** and **delta**:
-```bash
-~/my_dotfiles/scripts/install_bat_themes.sh
 ```
 
 ---
