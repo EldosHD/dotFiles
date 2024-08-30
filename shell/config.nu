@@ -30,8 +30,8 @@ $env.config = {
 }
 
 # alias
-alias l = eza -lag --git
-alias e = eza -lag --git
+alias l = eza -lag --git --icons
+alias e = l
 alias ca = cargo mommy
 alias cacu = ca install-update -l
 alias ucap = ca install-update -a
