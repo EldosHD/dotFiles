@@ -5,7 +5,7 @@
 [includeIf "gitdir:~/GitHub/Uni/"] # !!! GitHub has an capital "H" !!!
   path = ~/my_dotfiles/Uni/.gitconfig
 
-[includeIf "gitdir:~/GitHub/godot/gmtk2024/"] # !!! GitHub has an capital "H" !!!
+[includeIf "gitdir:~/GitHub/godot/"] # !!! GitHub has an capital "H" !!!
   path = ~/my_dotfiles/Uni/.gitconfig
 
 [core]
