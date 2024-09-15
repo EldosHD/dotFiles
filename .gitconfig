@@ -8,6 +8,9 @@
 [includeIf "gitdir:~/GitHub/godot/"] # !!! GitHub has an capital "H" !!!
   path = ~/my_dotfiles/Uni/.gitconfig
 
+[includeIf "gitdir:~/GitHub/serious/"] # !!! GitHub has an capital "H" !!!
+  path = ~/my_dotfiles/Uni/.gitconfig
+
 [core]
 	editor = nvim
 	# this has to be different on windows. "input" is for linux and mac
