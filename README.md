@@ -45,7 +45,7 @@ Then I like to install a couple programs I find useful:
 
 **Arch**: I use `yay` for installing from the AUR. You'll need to install `yay`, if your distro  doesn't ship with it.
 ```bash
-yay -S --noconfirm firefox thunderbird discord keepassxc catppuccin-cursors-mocha neovim nextcloud-client ulauncher
+yay -S --noconfirm firefox thunderbird discord keepassxc catppuccin-cursors-mocha neovim nextcloud-client ulauncher python-black
 ```
 
 ---
