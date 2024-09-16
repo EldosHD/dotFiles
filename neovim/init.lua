@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true 
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -497,7 +497,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        pyright = {},
+        pylsp = {},
         rust_analyzer = {},
         lua_ls = {
           -- cmd = {...},
@@ -528,6 +528,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'black',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -581,7 +582,7 @@ require('lazy').setup({
       formatters_by_ft = {
         -- Conform can also run multiple formatters sequentially
         lua = { 'stylua' },
-        python = { "black" },
+        python = { 'black' },
       },
     },
   },
@@ -708,7 +709,7 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    "catppuccin/nvim",
+    'catppuccin/nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       vim.cmd.colorscheme 'catppuccin'
