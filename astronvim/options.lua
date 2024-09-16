@@ -1,6 +1,0 @@
-return {
-  opt = {
-    wrap = true,
-  },
-}
-
