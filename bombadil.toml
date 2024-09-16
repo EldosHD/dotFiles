@@ -8,6 +8,7 @@ prehooks = [
   "rm ~/.config/Code/User/settings.json",
   "rm -rf ~/.config/Code/User/snippets",
   "rm -f ~/.config/ulauncher/*.json",
+  "rm -rf ~/.config/nvim",
   "mkdir -p ~/.config/zellij ~/.config/nushell",
   "mkdir -p ~/.config/nvim/lua/user",
   "mkdir -p ~/.config/bat/themes",
@@ -24,9 +25,7 @@ posthooks = [
 
 # editors
 vscode = { source = "vscode", target = ".config/Code/User" }
-nvim_init = { source = "astronvim/init.lua",  target = ".config/nvim/lua/user/init.lua" }
-nvim_options = { source = "astronvim/options.lua",  target = ".config/nvim/lua/user/options.lua"}
-nvim_mappings = { source = "astronvim/mappings.lua",  target = ".config/nvim/lua/user/mappings.lua"}
+neovim = { source = "neovim",  target = ".config/nvim" }
 
 # config files
 gitconfig = { source = ".gitconfig", target = ".gitconfig" }

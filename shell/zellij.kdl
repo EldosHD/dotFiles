@@ -1,4 +1,5 @@
 keybinds {
+    unbind "Ctrl n" // removed because of neovim autocompletion select next item
     unbind "Ctrl p"
     pane {
         bind "Ctrl k" { SwitchToMode "Normal"; }
