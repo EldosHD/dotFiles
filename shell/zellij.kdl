@@ -1,12 +1,5 @@
 keybinds {
-    unbind "Ctrl n" // removed because of neovim autocompletion select next item
-    unbind "Ctrl p"
-    pane {
-        bind "Ctrl k" { SwitchToMode "Normal"; }
-    }
-    shared_except "pane" "locked" {
-        bind "Ctrl k" { SwitchToMode "Pane"; }
-    }
+    unbind "Ctrl n" "Ctrl p" "Ctrl h"
 }
 
 plugins {
