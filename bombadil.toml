@@ -28,7 +28,7 @@ vscode = { source = "vscode", target = ".config/Code/User" }
 neovim = { source = "neovim",  target = ".config/nvim" }
 
 # config files
-gitconfig = { source = ".gitconfig", target = ".gitconfig" }
+gitconfig = { source = "./git/gitconfig", target = ".gitconfig" }
 sshconfig = { source = "shell/ssh_config", target = ".ssh/config" }
 
 # shell

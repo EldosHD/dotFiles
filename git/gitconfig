@@ -3,13 +3,13 @@
 	email = Eldos.sonofelax@gmail.com
 # include uni email
 [includeIf "gitdir:~/GitHub/Uni/"] # !!! GitHub has an capital "H" !!!
-  path = ~/my_dotfiles/Uni/.gitconfig
+  path = ~/my_dotfiles/git/vjmreichenbach_conf
 
 [includeIf "gitdir:~/GitHub/godot/"] # !!! GitHub has an capital "H" !!!
-  path = ~/my_dotfiles/Uni/.gitconfig
+  path = ~/my_dotfiles/git/vjmreichenbach_conf
 
 [includeIf "gitdir:~/GitHub/serious/"] # !!! GitHub has an capital "H" !!!
-  path = ~/my_dotfiles/Uni/.gitconfig
+  path = ~/my_dotfiles/git/vjmreichenbach_conf
 
 [core]
 	editor = nvim
