@@ -33,15 +33,22 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[S]earch [F]iles' })
+    vim.keymap.set(
+      'n',
+      '<leader>ff',
+      builtin.find_files,
+      { desc = '[S]earch [F]iles' }
+    )
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>fc', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = false,
-      })
+      builtin.current_buffer_fuzzy_find(
+        require('telescope.themes').get_dropdown {
+          winblend = 10,
+          previewer = false,
+        }
+      )
     end, { desc = '[F]uzzily search in [C]urrent buffer' })
   end,
 }
