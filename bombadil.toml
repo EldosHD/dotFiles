@@ -5,8 +5,6 @@ dotfiles_dir = "my_dotfiles"
 
 # An array of post install shell commands
 prehooks = [
-  "rm ~/.config/Code/User/settings.json",
-  "rm -rf ~/.config/Code/User/snippets",
   "rm -f ~/.config/ulauncher/*.json",
   "rm -rf ~/.config/nvim",
   "mkdir -p ~/.config/zellij ~/.config/nushell",
@@ -24,7 +22,6 @@ posthooks = [
 # and `target` shall be relative to $HOME directory or absolute.
 
 # editors
-vscode = { source = "vscode", target = ".config/Code/User" }
 neovim = { source = "neovim",  target = ".config/nvim" }
 
 # config files
@@ -36,7 +33,6 @@ starship = { source = "shell/starship.toml", target = ".config/starship.toml" }
 nuenv = { source = "shell/env.nu" , target = ".config/nushell/env.nu"}
 nuconfig = { source = "shell/config.nu" , target = ".config/nushell/config.nu"}
 zellij = { source = "shell/zellij.kdl", target = ".config/zellij/config.kdl" }
-# alacritty = { source = "shell/alacritty.yml" , target = ".alacritty.yml" }
 alacritty = { source = "shell/alacritty.toml" , target = ".alacritty.toml" }
 bat_config = { source = "shell/bat_config" , target = ".config/bat/config"}
 pycodestyle = { source = "shell/pycodestyle" , target = ".config/pycodestyle"}
