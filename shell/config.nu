@@ -38,6 +38,7 @@ alias ucap = ca install-update -a
 alias vim = nvim
 alias v = nvim .
 alias cbat = bat --decorations never
+alias cg = cd (git rev-parse --show-toplevel)
 
 # completions
 use ~/nu_scripts/custom-completions/cargo/cargo-completions.nu *
