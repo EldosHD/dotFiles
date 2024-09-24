@@ -3,7 +3,7 @@ $env.EDITOR = "/usr/bin/nvim"
 $env.config = {
     # Sort alphabetically
     rm: {
-        always_trash: false # always act as if -t was given. Can be overridden with -p
+        always_trash: true # always act as if -t was given. Can be overridden with -p
     }
 
     show_banner: false
@@ -14,7 +14,7 @@ $env.config = {
             keycode: char_j 
             mode: emacs
             event: [
-                { send: ClearScreen }
+                { send: ClearScreen } # set clear screen to C-j
             ]
         },
         {
@@ -23,7 +23,7 @@ $env.config = {
             keycode: char_l
             mode: emacs
             event: [
-                { send: HistoryHintComplete}
+                { send: HistoryHintComplete} #  set autocomplete to C-l
             ]
         }
     ]
