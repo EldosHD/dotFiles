@@ -34,6 +34,7 @@ return { -- Autoformatter
       -- Conform can also run multiple formatters sequentially
       lua = { 'stylua' },
       python = { 'black' },
+      markdown = { 'mdformat' },
     },
   },
 }

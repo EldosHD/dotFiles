@@ -134,6 +134,7 @@ return {
         },
       },
       texlab = {},
+      mdformat = {},
     }
 
     -- Ensure the servers and tools above are installed
