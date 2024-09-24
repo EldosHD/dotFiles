@@ -37,7 +37,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       'n',
       '<leader>ff',
       builtin.find_files,
-      { desc = '[S]earch [F]iles' }
+      { desc = '[F]ind [F]iles' }
     )
 
     -- Slightly advanced example of overriding default behavior and theme
