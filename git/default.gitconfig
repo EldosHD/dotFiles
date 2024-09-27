@@ -3,7 +3,7 @@
     email = Valentin.Reichenbach@live.com
 
 # include uni email
-[includeIf "gitdir:~/GitHub-EldosHD/"] # !!! GitHub has an capital "H" !!!
+[includeIf "gitdir:~/EldosHD-GitHub/"] # !!! GitHub has an capital "H" !!!
   path = ~/my_dotfiles/git/eldoshd.gitconfig
 
 [core]

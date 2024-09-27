@@ -14,7 +14,7 @@ prehooks = [
 
 posthooks = [
   "mkdir -p ~/GitHub",
-  "mkdir -p ~/GitHub-EldosHD",
+  "mkdir -p ~/EldosHD-GitHub",
   "eos-wallpaper-set ~/my_dotfiles/wallpapers/hearts.png"
 ]
 
