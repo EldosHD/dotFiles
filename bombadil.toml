@@ -10,6 +10,7 @@ prehooks = [
   "mkdir -p ~/.config/zellij ~/.config/nushell",
   "mkdir -p ~/.config/nvim/lua/user",
   "mkdir -p ~/.config/bat/themes",
+  "mkdir -p ~/.config/eza",
 ]
 
 posthooks = [
@@ -37,6 +38,7 @@ zellij = { source = "shell/zellij.kdl", target = ".config/zellij/config.kdl" }
 alacritty = { source = "shell/alacritty.toml" , target = ".alacritty.toml" }
 bat_config = { source = "shell/bat_config" , target = ".config/bat/config"}
 pycodestyle = { source = "shell/pycodestyle.toml" , target = ".config/pycodestyle"}
+eza = { source = "shell/eza_theme.yml" , target = ".config/eza/theme.yml"}
 
 # ulaucher
 ulauncher_extensions = { source = "ulauncher/extensions.json", target = ".config/ulauncher/extensions.json" }
