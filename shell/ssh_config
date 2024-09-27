@@ -1,14 +1,14 @@
 Include other_ssh_config # include another ssh config if it exists
 
-Host github.com # Default GitHub
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519
-
-Host github-Uni # Uni GitHub
+Host github.com # VJMReichenbach GitHub
   HostName github.com
   User git
   IdentityFile ~/.ssh/id_rsa_Uni
+  
+Host github-eldoshd # EldosHD GitHub
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
 
 Host vps # Minecraft Server
   HostName eldos.one

@@ -1,0 +1,30 @@
+[User]
+    name = VJMReichenbach
+    email = Valentin.Reichenbach@live.com
+
+# include uni email
+[includeIf "gitdir:~/GitHub-EldosHD/"] # !!! GitHub has an capital "H" !!!
+  path = ~/my_dotfiles/git/eldoshd.gitconfig
+
+[core]
+	editor = nvim
+	# this has to be different on windows. "input" is for linux and mac
+	autocrlf = input
+	# use git-delta as a pager
+  pager = delta
+[init]
+	defaultBranch = main
+
+# git-delta options
+[pull]
+	rebase = false
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  features = Catppuccin Mocha
+  dark = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default

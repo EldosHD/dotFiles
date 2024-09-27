@@ -13,7 +13,8 @@ prehooks = [
 ]
 
 posthooks = [
-  "mkdir -p ~/GitHub/Uni",
+  "mkdir -p ~/GitHub",
+  "mkdir -p ~/GitHub-EldosHD",
   "eos-wallpaper-set ~/my_dotfiles/wallpapers/hearts.png"
 ]
 
@@ -25,7 +26,7 @@ posthooks = [
 neovim = { source = "neovim",  target = ".config/nvim" }
 
 # config files
-gitconfig = { source = "./git/gitconfig", target = ".gitconfig" }
+gitconfig = { source = "./git/default.gitconfig", target = ".gitconfig" }
 sshconfig = { source = "shell/ssh_config", target = ".ssh/config" }
 
 # shell
