@@ -87,7 +87,7 @@ file_type:
   temp: {foreground: "#EBA0AC"}
   compiled: {foreground: "#74C7EC"}
   build: {foreground: "#585B70"}
-  source: {foreground: "#89B4FA"}
+  source: {foreground: "#cba6f7"}
 
 punctuation: {foreground: "#7F849C"}
 date: {foreground: "#F9E2AF"}
