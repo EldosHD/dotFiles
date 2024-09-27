@@ -42,7 +42,7 @@ cargo install cargo-binstall
 First you need to clone this repository:
 
 ```bash
-git clone https://github.com/EldosHD/dotFiles.git ~/my_dotfiles
+git clone git@github.com:VJMReichenbach/dotFiles.git ~/my_dotfiles
 ```
 
 Then I like to install a couple programs I find useful:
