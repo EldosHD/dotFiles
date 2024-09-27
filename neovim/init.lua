@@ -154,3 +154,9 @@ require('lazy').setup {
   -- import everything from `plugins/*.lua`
   { import = 'plugins' },
 }
+
+vim.filetype.add {
+  extension = {
+    gitconfig = 'gitconfig',
+  },
+}
