@@ -33,7 +33,7 @@ return { -- Autoformatter
     formatters = {
       texfmt = {
         command = 'tex-fmt',
-        args = { '$FILENAME', '--print' }, -- conform works via stdout. so use --print
+        args = { '$FILENAME', '--print', '--keep' }, -- conform works via stdout. so use --print
       },
     },
     formatters_by_ft = {
