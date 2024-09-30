@@ -137,7 +137,6 @@ return {
       mdformat = {}, -- Markdown formatter
       stylua = {}, -- Lua formatter
       black = {}, -- Python formatter
-      latexindent = {}, -- LaTeX formatter
     }
 
     -- Ensure the servers and tools above are installed
