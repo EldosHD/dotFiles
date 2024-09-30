@@ -41,7 +41,8 @@ return { -- Autoformatter
       lua = { 'stylua' },
       python = { 'black' },
       markdown = { 'mdformat' },
-      tex = { 'texfmt' },
+      -- TODO: doesnt work
+      -- tex = { 'texfmt' },
     },
   },
 }
